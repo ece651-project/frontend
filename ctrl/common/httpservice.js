@@ -4,7 +4,7 @@ const url = 'http://127.0.0.1:80';
     'use strict';
 
     angular
-        .module('name')
+        .module('app', [])
         .factory('UserHttpService', UserHttpService)
         .factory('AptHttpService', AptHttpService);
 
