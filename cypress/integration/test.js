@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
-context('Cypress.Commands', () => {
-    
+describe('Test', ()=>{
+    it('simple test', ()=>{
+        expect(1).to.equal(1)
+    })
 })
