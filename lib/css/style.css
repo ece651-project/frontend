@@ -1,0 +1,45 @@
+
+.navbar .navbar-header{
+    margin-left: 20px;
+}
+.navbar .navbar-brand{
+    color: #ffa500;
+}
+.navbar-nav{
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.index-back{
+    background: no-repeat center center fixed;
+    background-image: url(../../src/3.jpg);
+    background-size: cover;
+}
+.index-container{
+    color: #fff;
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-top: 180px;
+    text-align: center;
+}
+
+.pl-13p {
+    padding-left: 13px;
+}
+.pl-17p {
+    padding-left: 17px;
+}
+
+.modal-body .form-group .ng-hide {
+    display: block!important;
+    visibility: hidden;
+}
+.form-control-eye {
+    position: absolute;
+    top: 7.0rem;
+    right: 2.8rem;
+    z-index: 2;
+    display: block;   
+    text-align: center;
+    cursor: pointer;
+}
