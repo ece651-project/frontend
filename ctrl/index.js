@@ -69,6 +69,8 @@
     function ModalSignupCtrl($scope, $window, UserHttpService, $uibModal, $uibModalInstance){
         var email_exist, name_exist;
         $scope.pattern_pwd = /^(?=.*[a-z])(?=.*\d)[A-Za-z\d\W]{8,}$/;
+        $scope.typepwd = false;
+        $scope.togglepwd = function(){$scope.typepwd = ! $scope.typepwd}
         $scope.f_upe = function(){email_exist = false;}
         $scope.f_upn = function(){name_exist = false;}
         $scope.signup_email_errmsg = function(){
@@ -87,7 +89,7 @@
             $scope.signup_name_err= function(){return name_exist || $scope.signup_form.signup_name.$invalid;}
             $scope.signup_pwd_err= function(){return $scope.signup_form.signup_pwd.$invalid;}
             $scope.signup_disable = function(){return $scope.signup_form.$invalid;}
-            UserHttpService.createUser().then(function(res){
+            UserHttpService.createUser($scope.user_up).then(function(res){
                 if(res.success){
                     // TODO
                     $window.location.href = "/page/page.html";

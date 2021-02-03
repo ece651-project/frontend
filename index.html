@@ -42,7 +42,7 @@
                     </div>
                     <div class="form-group mb-2">
                         <input class="form-control form-control-lg" type="{{typepwd ? 'text':'password'}}" placeholder="Enter password" name="login_pwd" ng-focus="f_inp()" ng-model="user_in.pwd" required>
-                        <span class="form-control-eye" ng-show="login_form.login_pwd.$valid" ng-class="{'fa fa-eye': typepwd, 'fa fa-eye-slash': !typepwd}" ng-click="togglepwd()"></span>
+                        <span class="form-control-eye" ng-show="!login_form.login_pwd.$error.required" ng-class="{'fa fa-eye': typepwd, 'fa fa-eye-slash': !typepwd}" ng-click="togglepwd()"></span>
                         <span class="text-danger pl-17p" ng-show="login_pwd_err()">{{login_pwd_errmsg()}}</span>
                     </div>
                     <div class="form-group form-check text-right mb-0">
@@ -74,7 +74,8 @@
                     </div>
                     <div class="form-group mb-1">
                         <label>Password</label>
-                        <input class="form-control" type="password" name="signup_pwd" ng-pattern="pattern_pwd" ng-model="user_up.pwd" required>
+                        <input class="form-control" type="{{typepwd ? 'text':'password'}}" name="signup_pwd" ng-pattern="pattern_pwd" ng-model="user_up.pwd" required>
+                        <span class="form-control-eye s-eye" ng-show="!signup_form.signup_pwd.$error.required" ng-class="{'fa fa-eye': typepwd, 'fa fa-eye-slash': !typepwd}" ng-click="togglepwd()"></span>
                         <span class="text-danger pl-13p" ng-show="signup_pwd_err()">{{signup_pwd_errmsg()}}</span>
                     </div>
                 </form>
