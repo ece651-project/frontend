@@ -1,10 +1,10 @@
-const url = 'http://127.0.0.1:80';
+const url = 'http://localhost:8080';
 
 (function () {
     'use strict';
 
     angular
-        .module('app', [])
+        .module('httpservice', [])
         .factory('UserHttpService', UserHttpService)
         .factory('AptHttpService', AptHttpService);
 
