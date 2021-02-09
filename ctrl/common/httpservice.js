@@ -1,4 +1,4 @@
-const url = 'http://localhost:8080';
+const url = 'http://13.229.54.197:8080';
 
 (function () {
     'use strict';
@@ -12,7 +12,7 @@ const url = 'http://localhost:8080';
     function UserHttpService($http){
         var service = {};
         service.login = function(data){
-            return $http.post(url+'/login', data).then(successCallback, errorCallback);
+            return $http.post(url+'/user/login', data).then(successCallback, errorCallback);
         };
         service.getUser = function(uid){
             return $http.get(url+'/user/get_user/'+uid).then(successCallback, errorCallback);
