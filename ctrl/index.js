@@ -2,7 +2,7 @@
     angular.module('app', ['modalservice'])
         .controller('index_ctrl', IndexController);
     
-    function IndexController($scope, ModalService){
+    function IndexController($scope, $window, ModalService){
         $scope.navbutton1 = "Log in";
         $scope.navbutton2 = "Sign up";
         $scope.to_login = function(){
@@ -10,6 +10,9 @@
         }
         $scope.to_signup = function(){
             ModalService.open_signup();
+        }
+        $scope.to_aptlist = function(){
+            $window.location.href = "/page/page.html";
         }
     }
 })();

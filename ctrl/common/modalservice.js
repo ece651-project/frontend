@@ -44,20 +44,22 @@
             $scope.login_email_err = function(){return email_nexist || $scope.login_form.login_email.$invalid;}
             $scope.login_pwd_err = function(){return pwd_incorr || $scope.login_form.login_pwd.$invalid;}
             $scope.login_disable = function(){return $scope.login_form.$invalid;}
-            UserHttpService.login($scope.user_in).then(function(res){
-                if(res.success){
+            if($scope.login_form.$valid){
+                UserHttpService.login($scope.user_in).then(function(res){
+                    if(res.success){
+                        // TODO
+                        $window.location.href = "/page/page.html";
+                    }
+                    else{
+                        // TODO
+                        email_nexist = true;
+                        pwd_incorr = true;
+                    }
+                },function(res){
                     // TODO
-                    $window.location.href = "/page/page.html";
-                }
-                else{
-                    // TODO
-                    email_nexist = true;
-                    pwd_incorr = true;
-                }
-            },function(res){
-                // TODO
-                console.log(res);
-            });
+                    console.log(res);
+                });
+            }
         }
         $scope.to_signup = function(){
             $uibModalInstance.dismiss();
@@ -83,11 +85,11 @@
         $scope.signup_pwd_errmsg = function(){
             return $scope.signup_form.signup_pwd.$error.required ? "Password is required" : "At lease 8 characters with 1 letter and 1 number";
         }
+        $scope.signup_email_err= function(){return $scope.signup_form.signup_email.$dirty && (email_exist || $scope.signup_form.signup_email.$invalid);}
+        $scope.signup_name_err= function(){return $scope.signup_form.signup_name.$dirty && (name_exist || $scope.signup_form.signup_name.$invalid);}
+        $scope.signup_pwd_err= function(){return $scope.signup_form.signup_pwd.$dirty && $scope.signup_form.signup_pwd.$invalid;}
+        $scope.signup_disable = function(){return $scope.signup_form.$invalid;}
         $scope.signup_click = function(){
-            $scope.signup_email_err= function(){return email_exist || $scope.signup_form.signup_email.$invalid;}
-            $scope.signup_name_err= function(){return name_exist || $scope.signup_form.signup_name.$invalid;}
-            $scope.signup_pwd_err= function(){return $scope.signup_form.signup_pwd.$invalid;}
-            $scope.signup_disable = function(){return $scope.signup_form.$invalid;}
             UserHttpService.createUser($scope.user_up).then(function(res){
                 if(res.success){
                     // TODO

@@ -28,7 +28,15 @@
         <div class="index-container">
             <p style="font-size: 64px;">XxxX</p><br>
             <p style="font-size: large;">fosdfsdfntsisdfdsdadfoisjhdf</p>
-            <button class="btn btn-lg btn-primary mt-5" type="button" ng-click="to_login()">Login</button>
+            <div class="input-group input-group-lg pt-5">
+                <div class="input-group-prepend">
+                    <span class="input-group-text fa fa-search"></span>
+                </div>
+                <input class="form-control" type="text" placeholder="Search by City" name="searchbar">
+                <div class="input-group-append">
+                    <button class="btn btn-warning" ng-click="to_aptlist()"><i class="fa fa-chevron-right"></i></button>
+                </div>
+            </div>
         </div>
         <script src="ctrl/common/httpservice.js"></script>
         <script src="ctrl/common/modalservice.js"></script>
