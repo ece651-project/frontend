@@ -26,7 +26,7 @@
         return service;
     }
 
-    function ModalLoginCtrl($scope, $window, UserHttpService, ModalService, $uibModalInstance){
+    function ModalLoginCtrl($scope, UserHttpService, ModalService, $uibModalInstance){
         var email_nexist, pwd_incorr;
         $scope.typepwd = false;
         $scope.togglepwd = function(){$scope.typepwd = ! $scope.typepwd}
@@ -47,13 +47,11 @@
             if($scope.login_form.$valid){
                 UserHttpService.login($scope.user_in).then(function(res){
                     if(res.success){
-                        // TODO
-                        $window.location.href = "/page/page.html";
+                        localStorage.setItem("uid", res.uid);
+                        location.reload();
                     }
                     else{
-                        // TODO
-                        email_nexist = true;
-                        pwd_incorr = true;
+                        res.msg.includes("Password") ? pwd_incorr = true : email_nexist = true;
                     }
                 },function(res){
                     // TODO
@@ -67,7 +65,7 @@
         }
     }
 
-    function ModalSignupCtrl($scope, $window, UserHttpService, ModalService, $uibModalInstance){
+    function ModalSignupCtrl($scope, UserHttpService, ModalService, $uibModalInstance){
         var email_exist, name_exist;
         $scope.pattern_pwd = /^(?=.*[a-z])(?=.*\d)[A-Za-z\d\W]{8,}$/;
         $scope.typepwd = false;
@@ -92,13 +90,11 @@
         $scope.signup_click = function(){
             UserHttpService.createUser($scope.user_up).then(function(res){
                 if(res.success){
-                    // TODO
-                    $window.location.href = "/page/page.html";
+                    localStorage.setItem("uid", res.uid);
+                    location.reload();
                 }
                 else{
-                    // TODO
-                    email_exist = true;
-                    name_exist = true;
+                    res.msg.includes("email") ? email_exist = true : name_exist = true;
                 }
             }, function(res){
                 // TODO

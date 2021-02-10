@@ -21,7 +21,7 @@ const url = 'http://13.229.54.197:8080';
             return $http.get(url+'/user/get_apt/'+uid).then(successCallback, errorCallback);
         }
         service.deleteUser = function(uid){
-            return $http.get(url+'/user/delete_user/'+uid).then(successCallback, errorCallback);
+            return $http.delete(url+'/user/delete_user/'+uid).then(successCallback, errorCallback);
         };
         service.createUser = function(data){
             return $http.post(url+'/user/add_user', data).then(successCallback, errorCallback);
@@ -42,7 +42,7 @@ const url = 'http://13.229.54.197:8080';
             return $http.get(url+'/user/get_all/').then(successCallback, errorCallback);
         }
         service.deleteApt = function(uid, aid){
-            return $http.get(url+'/apt/delete_apt/'+uid+'/'+aid).then(successCallback, errorCallback);
+            return $http.delete(url+'/apt/delete_apt/'+uid+'/'+aid).then(successCallback, errorCallback);
         };
         service.createApt = function(data){
             return $http.post(url+'/apt/add_apt', data).then(successCallback, errorCallback);
