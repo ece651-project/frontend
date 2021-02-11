@@ -46,16 +46,16 @@
             $scope.login_disable = function(){return $scope.login_form.$invalid;}
             if($scope.login_form.$valid){
                 UserHttpService.login($scope.user_in).then(function(res){
-                    if(res.success){
-                        localStorage.setItem("uid", res.uid);
+                    if(res.data.success){
+                        localStorage.setItem("uid", res.data.uid);
                         location.reload();
                     }
                     else{
-                        res.msg.includes("Password") ? pwd_incorr = true : email_nexist = true;
+                        res.data.msg.includes("Password") ? pwd_incorr = true : email_nexist = true;
                     }
                 },function(res){
                     // TODO
-                    console.log(res);
+                    console.log(res.status);
                 });
             }
         }
@@ -89,16 +89,16 @@
         $scope.signup_disable = function(){return $scope.signup_form.$invalid;}
         $scope.signup_click = function(){
             UserHttpService.createUser($scope.user_up).then(function(res){
-                if(res.success){
-                    localStorage.setItem("uid", res.uid);
+                if(res.data.success){
+                    localStorage.setItem("uid", res.data.uid);
                     location.reload();
                 }
                 else{
-                    res.msg.includes("email") ? email_exist = true : name_exist = true;
+                    res.data.msg.includes("email") ? email_exist = true : name_exist = true;
                 }
             }, function(res){
                 // TODO
-                console.log(res);
+                console.log(res.status);
             });
         }
         $scope.to_login = function(){
