@@ -56,8 +56,9 @@
 </p>
 </div>
 
-
-
+<div style="padding-left:65px;font-size:xx-large;">Like
+<div id="unlike" class="unlike1"></div>
+<div id="like" class="like1"></div></div>
 
 
 
@@ -121,7 +122,6 @@
 
 
         
-
 
 
 
@@ -305,7 +305,12 @@
         $("#comment1").hide();
         $("#table_show").show();
         $("#thanks").hide();
-      $("#rate1").click(function(){
+        $("#like").hide();        
+      $("#unlike").click(function(){
+        $("#unlike").hide();
+        $("#like").show();
+      });
+        $("#rate1").click(function(){
         $("#table_show").hide();
         $("#comment1").show();
         $("#rate2").show();

@@ -64,6 +64,23 @@
     margin-top: 2px;
 }
 
+.unlike1{
+    overflow: hidden; width: 19px; height: 19px; 
+    background-image: url(../../src/empty_star.png);
+    display: inline-block;
+    line-height: inherit;
+    vertical-align: top;
+    margin-top: 2px;
+}
+
+.like1 {
+    overflow: hidden; width: 19px; height: 19px;
+    background-image: url(../../src/full_star.png); 
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2px;
+}
+
 .rating-input {
     height: 25px;
 }
