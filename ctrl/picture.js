@@ -17,15 +17,24 @@
                 templateUrl: 'signup2.html',
                 controller: 'ModalSignupCtrl',
             }).result.catch(function(){});
-            else
+            else if(a==3)
             $uibModal.open({
                 size:'md modal-dialog-centered',
                 templateUrl: 'signup3.html',
                 controller: 'ModalSignupCtrl',
             }).result.catch(function(){});
+            else if(a==4)
+            $uibModal.open({
+                size:'md modal-dialog-centered',
+                templateUrl: 'signup4.html',
+                controller: 'ModalSignupCtrl',
+            }).result.catch(function(){});           
         }
     }
 
     function ModalSignupCtrl(){
     }
+    
+
+
 })();

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="uft-8">
+        <title>XXX</title>
+        <script src="../lib/js/jquery.min.js"></script>
+        <script src="../lib/js/angular.js"></script>
+        <script src="../lib/js/angular-animate.js"></script>
+        <script src="../lib/js/angular-sanitize.js"></script>
+        <script src="../lib/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
+        <script src="../lib/js/bootstrap-rating-input.js"></script>     
+        <script src="../lib/js/bootstrap-rating-input1.js"></script> 
+        <script src="../ctrl/common/httpservice.js"></script>
+        <script src="../ctrl/picture.js"></script>
+        <script src="../lib/js/bootstrap-datetimepicker.fr.js"></script>
+        <script src="../lib/js/bootstrap-datetimepicker.js"></script>
+        <link href="../lib/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="../lib/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="../lib/css/style.css" rel="stylesheet" type="text/css">
+        <link href="../lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">  
+
+    </head>
+    <body ng-controller="index_ctrl">
+
+      <nav class="navbar navbar-expand-sm bg-light">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <label class="form-inline" >Searching：
+              <input type="text" style="width:500px" class="form-control m-2" />
+         </label>    
+          </li>
+          <li class="nav-item m-2">
+            <a class="nav-link" href="#">Help</a>
+          </li>
+          <li class="nav-item m-2">
+            <a class="nav-link" href="#">Sign up</a>
+          </li>
+          <li class="nav-item m-2">
+            <a class="nav-link" href="#">Log in</a>
+          </li>
+        </ul>
+      </nav>
+
+
+
+   <div  style="width:50%;height:100px;" class="container  text-center m-5"    ng-click="show_picture(4)">
+    <p style="font-size:x-large;font-weight:700">Entire apartment hosted by Staaron</p>
+    <p>2 guests · 1 bedroom · 1 bed · 1 bath</p>
+</div>
+
+<div  style="position:relative;width:50%;height:190px;overflow:hidden;padding-bottom:20px; " class="container1 border text-center m-5"    ng-click="show_picture(4)">
+ <p class=" text-left"> If the room is full on the selected date, you can click on your avatar to select other houses
+  [Location] Poly Daduhui is located in Huangpu Avenue, near Pazhou Exhibition Center, adjacent to Pazhou Bridge, and adjacent to NetEase Guangzhou headquarters and Sanqi Mutual Entertainment. The nearby Keyun Road Metro Station of Line 5 provides direct access to Zhujiang New Town K11 and Tianhe CBD. Canton Tower is 6.1 km away. It is 8 stations away from Changlong Zoo Metro.
+  [Room type] 1 bedroom and 1 living room duplex Loft with full floor-to-ceiling windows, the room is equipped with a 1.8-meter bed, with a nice view, and a safe, comfortable and warm space welcomes you
+  [Supporting facilities] 1. There are various convenient facilities within walking distance, convenience stores, supermarkets, and various restaurants for easy dining. 2. There is a park nearby for you to take a walk and entertain. The housing facilities are complete, the toiletries are complete, you can move in with a bag, and there is a kitchen in the room to cook by yourself. There is a washing machine in the room to wash clothes. The large living room gives you a relaxing and entertaining space. You can enjoy Ge Youtan on the soft sofa. If it is too hot in the summer, you can enjoy ice watermelon and iced drinks when you turn on the refrigerator in the room.
+</p>
+</div>
+
+
+      <script type="text/ng-template" id="signup4.html">
+        <div  style="width:800px;height:500px" class="card text-center  " >
+          If the room is full on the selected date, you can click on your avatar to select other houses [Location] Poly Daduhui is located in Huangpu Avenue, near Pazhou Exhibition Center, adjacent to Pazhou Bridge, and adjacent to NetEase Guangzhou headquarters and Sanqi Mutual Entertainment. The nearby Keyun Road Metro Station of Line 5 provides direct access to Zhujiang New Town K11 and Tianhe CBD. Canton Tower is 6.1 km away. It is 8 stations away from Changlong Zoo Metro. [Room type] 1 bedroom and 1 living room duplex Loft with full floor-to-ceiling windows, the room is equipped with a 1.8-meter bed, with a nice view, and a safe, comfortable and warm space welcomes you [Supporting facilities] 1. There are various convenient facilities within walking distance, convenience stores, supermarkets, and various restaurants for easy dining. 2. There is a park nearby for you to take a walk and entertain. The housing facilities are complete, the toiletries are complete, you can move in with a bag, and there is a kitchen in the room to cook by yourself. There is a washing machine in the room to wash clothes. The large living room gives you a relaxing and entertaining space. You can enjoy Ge Youtan on the soft sofa. If it is too hot in the summer, you can enjoy ice watermelon and iced drinks when you turn on the refrigerator in the room.
+          </div>
+    </script>
+    <script type="text/ng-template" id="signup1.html">
+      <img style="width:1000px;" src="../src/4.jpg" class="img-rounded">
+  </script>
+  <script type="text/ng-template" id="signup2.html">
+      <img style="width:1000px;" src="../src/5.jpg" class="img-rounded">
+  </script>
+  <script type="text/ng-template" id="signup3.html">
+      <img style="width:1000px;" src="../src/7.jpg" class="img-rounded">
+  </script>
+  <ul id="sPic" style="position:absolute;left:1180px;top:110px" class="list-group list-group-horizontal">
+      <li><a href="javascript:void(0)" title="图片一"><img style="position:absolute;width:350px" alt="图片一" src="../src/4.jpg" class="img-rounded" ng-click="show_picture(1)">{{navbutton1}}</a></li>
+      <li><a href="javascript:void(0)" title="图片二"><img style="position:absolute;left:360px;width:350px" alt="图片二" src="../src/5.jpg"class="img-rounded"ng-click="show_picture(2)">{{navbutton1}}</a></li>
+      <li><a href="javascript:void(0)" title="图片三"><img style="position:absolute;top:245px;width:350px" alt="图片三" src="../src/7.jpg"class="img-rounded"ng-click="show_picture(3)">{{navbutton1}}</a></li>
+      <li><a href="javascript:void(0)" title="图片三"><img style="position:absolute;left:360px;top:245px;width:350px" alt="图片三" src="../src/8.jpg"class="img-rounded"ng-click="show_picture(4)">{{navbutton1}}</a></li>
+  </ul>
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="position:relative;width:50%"id="ratesystem" class="container m-5" >
+    <h2>Comment</h2>
+    <table class="table table-hover">
+      <tbody id=table_show>
+        <tr>
+          <td>Check-in</td>
+          <td class="float-right"><input id="rate_star1" type="number"   class="rating" data-caption="" value="3" data-min="1" data-max="5" /></td>
+        </tr>
+        <tr>
+          <td>Cleanliness</td>
+          <td class="float-right"><input id="rate_star1" type="number"  class="rating" data-caption="" value="4" data-min="1" data-max="5" /></td>
+        </tr>
+        <tr>
+          <td>Communication</td>
+          <td class="float-right"><input id="rate_star1" type="number"   class="rating" data-caption="" value="2" data-min="1" data-max="5" /></td>
+        </tr>
+    <tr>
+        <td>Accuracy</td>
+        <td class="float-right"><input id="rate_star1" type="number"   class="rating " data-caption="" value="3" data-min="1" data-max="5" /></td>
+        </tr>
+        <tr>
+        <td>Location</td>
+        <td class="float-right"><input id="rate_star1" type="number"  class="rating" data-caption="" value="4" data-min="1" data-max="5" /></td>
+        </tr>
+        <tr>
+        <td>Value</td>
+        <td class="float-right"><input id="rate_star1" type="number"   class="rating" data-caption="" value="2" data-min="1" data-max="5" /></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td class="float-right"><input id="rate_star1" type="number"   class="rating1" data-caption="" value="4" data-min="1" data-max="5" /></td>
+        </tr>
+      </tbody>
+      <tbody id="table_rate">
+        <tr>
+          <td>Check-in</td>
+          <td class="float-right"><input id="rate_star1" type="number"   class="rating1" data-caption="" value="0" data-min="1" data-max="5" /></td>
+        </tr>
+        <tr>
+          <td>Cleanliness</td>
+          <td class="float-right"><input id="rate_star1" type="number"  class="rating1" data-caption="" value="0" data-min="1" data-max="5" /></td>
+        </tr>
+        <tr>
+          <td>Communication</td>
+          <td class="float-right"><input id="rate_star1" type="number"   class="rating1" data-caption="" value="0" data-min="1" data-max="5" /></td>
+        </tr>
+        <tr>
+        <td>Accuracy</td>
+        <td class="float-right"><input id="rate_star1" type="number"   class="rating1 " data-caption="" value="0" data-min="1" data-max="5" /></td>
+        </tr>
+        <tr>
+        <td>Location</td>
+        <td class="float-right"><input id="rate_star1" type="number"  class="rating1" data-caption="" value="0" data-min="1" data-max="5" /></td>
+        </tr>
+        <tr>
+        <td>Value</td>
+        <td class="float-right"><input id="rate_star1" type="number"   class="rating1" data-caption="" value="0" data-min="1" data-max="5" /></td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td class="float-right"><input id="rate_star1" type="number"   class="rating1" data-caption="" value="0" data-min="1" data-max="5" /></td>
+        </tr>
+        </tbody>
+    </table>
+      <form id="comment1">
+        <div class="input-group-lg mb-3 input-group-prepend ">
+            <div class="input-group-text">
+              <input type="checkbox"> 
+            </div>
+          <input type="text" class="form-control" placeholder="Please enter your comment here">
+        </div>
+      </form>
+ 
+    <button id="rate1" type="button" ng-click="show_picture()" class="tip1"  >
+      Rate for this apartment
+     </button>
+     <button id="rate2" type="button" ng-click="show_picture()" class="tip1"  >
+      Submit
+     </button>
+    <p style="font-size:x-large;font-weight:700;color:#f66;margin:37px" id="thanks">
+         Thanks for replying!
+    </p>
+<div>
+    <button id="rate1" type="button" class="tip0"  >
+        Clean
+    </button>
+    <button id="rate1" type="button" class="tip0"  >
+    Safe
+    </button>
+    <button id="rate1" type="button" class="tip0"  >
+      Pet
+      </button>
+  <button id="rate1" type="button" class="tip0"  >
+    Large Room
+    </button>
+  <button id="rate1" type="button" class="tip0"  >
+    Double Floor
+    </button>
+  </div>
+</div>
+
+
+
+
+
+
+ 
+
+
+
+    <div style="position:absolute;left:1150px;top:580px;width:710px"  class="card text-center m-4 " >
+        <div class="card-header" style="font-size:x-large;font-weight:600">Check-in Date</div>
+            <ul class="list-group list-group-horizontal">
+                <li style="width:355px;height:110px" class="list-group-item1">               
+                    <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                        Check-in:
+                        <input class="form-control1"  type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <input type="hidden" id="dtp_input2" value="" /><br/>
+                  </li>
+                <li style="width:355px;height:110px" class="list-group-item1">              
+                    <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                        Check-out:
+                        <input class="form-control1"   type="text" value="" readonly>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <input type="hidden" id="dtp_input2" value="" /><br/>
+                </li>
+              </ul>
+              <div class="card-body " >
+                <p class="float-left m-2">Basic fee</p>
+                <p class="float-right m-2"> 60$</p>
+              </div>
+              <div class="card-body " >
+                <p class="float-left m-2">Tax fee</p>
+                <p class="float-right m-2"> 80$</p>
+              </div>
+              <div class="card-body " >
+                <p class="float-left m-2">Cleaning fee</p>
+                <p class="float-right m-2"> 60$</p>
+              </div>
+
+          <div class="card-body text-center" style="font-size:x-large;font-weight:600">$200/Day</div>
+
+        <div class="card-footer">
+            <div class="align-content-center ">
+                <button style="width:660px;" type="button" ng-click="show_picture()" class="tip2"  >
+                    Reserve
+                    </button>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#table_rate").hide();
+        $("#rate2").hide();
+        $("#comment1").hide();
+        $("#table_show").show();
+        $("#thanks").hide();
+      $("#rate1").click(function(){
+        $("#table_show").hide();
+        $("#comment1").show();
+        $("#rate2").show();
+        $("#rate1").hide();
+        $("#table_rate").show();
+
+      });
+      $("#rate2").click(function(){
+        $("#table_show").show();
+        $("#table_rate").hide();
+        $("#rate2").hide();
+        $("#comment1").hide();
+        $("#thanks").show();
+      });
+      $('#table_rate').on('change', function(){
+        //alert("Changed: input" + $(this).val())
+      });     });
+    $('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>
