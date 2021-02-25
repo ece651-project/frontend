@@ -57,10 +57,51 @@
 </div>
 
 
-      <script type="text/ng-template" id="signup4.html">
-        <div  style="width:800px;height:500px" class="card text-center  " >
-          If the room is full on the selected date, you can click on your avatar to select other houses [Location] Poly Daduhui is located in Huangpu Avenue, near Pazhou Exhibition Center, adjacent to Pazhou Bridge, and adjacent to NetEase Guangzhou headquarters and Sanqi Mutual Entertainment. The nearby Keyun Road Metro Station of Line 5 provides direct access to Zhujiang New Town K11 and Tianhe CBD. Canton Tower is 6.1 km away. It is 8 stations away from Changlong Zoo Metro. [Room type] 1 bedroom and 1 living room duplex Loft with full floor-to-ceiling windows, the room is equipped with a 1.8-meter bed, with a nice view, and a safe, comfortable and warm space welcomes you [Supporting facilities] 1. There are various convenient facilities within walking distance, convenience stores, supermarkets, and various restaurants for easy dining. 2. There is a park nearby for you to take a walk and entertain. The housing facilities are complete, the toiletries are complete, you can move in with a bag, and there is a kitchen in the room to cook by yourself. There is a washing machine in the room to wash clothes. The large living room gives you a relaxing and entertaining space. You can enjoy Ge Youtan on the soft sofa. If it is too hot in the summer, you can enjoy ice watermelon and iced drinks when you turn on the refrigerator in the room.
-          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/ng-template" id="reserve.html">
+  <div  style="width:800px;height:500px" class="card text-center  " >
+    <div class="card-header" style="font-size:x-large;font-weight:600">Contact Information</div>
+    <div class="card-footer align-content-center">
+      <div class="card-body " >
+        <p class="float-left m-2">Name:</p>
+        <p class="float-right m-2"> Li</p>
+      </div>
+      <div class="card-body " >
+        <p class="float-left m-2">Phone number:</p>
+        <p class="float-right m-2"> 13888888888</p>
+      </div>
+    <div class="card-body text-center" style="font-size:x-large;font-weight:600">$200/Day</div>
+    <button style="width:660px;" type="button" ng-click="show_picture(5)" class="tip2"  >
+        Reserve now
+        </button>
+  </div>
+    </div>
+  </script>
+    <script type="text/ng-template" id="rate_submit.html">
+      <div  style="width:800px;height:500px" class="card text-center  " >
+        If the room is full on the selected date, you can click on your avatar to select other houses [Location] Poly Daduhui is located in Huangpu Avenue, near Pazhou Exhibition Center, adjacent to Pazhou Bridge, and adjacent to NetEase Guangzhou headquarters and Sanqi Mutual Entertainment. The nearby Keyun Road Metro Station of Line 5 provides direct access to Zhujiang New Town K11 and Tianhe CBD. Canton Tower is 6.1 km away. It is 8 stations away from Changlong Zoo Metro. [Room type] 1 bedroom and 1 living room duplex Loft with full floor-to-ceiling windows, the room is equipped with a 1.8-meter bed, with a nice view, and a safe, comfortable and warm space welcomes you [Supporting facilities] 1. There are various convenient facilities within walking distance, convenience stores, supermarkets, and various restaurants for easy dining. 2. There is a park nearby for you to take a walk and entertain. The housing facilities are complete, the toiletries are complete, you can move in with a bag, and there is a kitchen in the room to cook by yourself. There is a washing machine in the room to wash clothes. The large living room gives you a relaxing and entertaining space. You can enjoy Ge Youtan on the soft sofa. If it is too hot in the summer, you can enjoy ice watermelon and iced drinks when you turn on the refrigerator in the room.
+        </div>
     </script>
     <script type="text/ng-template" id="signup1.html">
       <img style="width:1000px;" src="../src/4.jpg" class="img-rounded">
@@ -166,10 +207,10 @@
         </div>
       </form>
  
-    <button id="rate1" type="button" ng-click="show_picture()" class="tip1"  >
+    <button id="rate1" type="button" class="tip1"  >
       Rate for this apartment
      </button>
-     <button id="rate2" type="button" ng-click="show_picture()" class="tip1"  >
+     <button id="rate2" type="button"  class="tip1"  >
       Submit
      </button>
     <p style="font-size:x-large;font-weight:700;color:#f66;margin:37px" id="thanks">
@@ -242,12 +283,20 @@
 
         <div class="card-footer">
             <div class="align-content-center ">
-                <button style="width:660px;" type="button" ng-click="show_picture()" class="tip2"  >
+                <button style="width:660px;" type="button" ng-click="show_picture(5)" class="tip2"  >
                     Reserve
                     </button>
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
 
 <script type="text/javascript">
     $(document).ready(function(){
