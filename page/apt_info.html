@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html ng-app="apt-info">
     <head>
         <meta charset="uft-8">
         <title>XXX</title>
@@ -25,9 +25,9 @@
       <nav class="navbar navbar-expand-sm bg-light">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <label class="form-inline" >Searching：
+            <label class="form-inline" >Searching： 
               <input type="text" style="width:500px" class="form-control m-2" />
-         </label>    
+         </label>     
           </li>
           <li class="nav-item m-2">
             <a class="nav-link" href="#">Help</a>
@@ -42,7 +42,8 @@
       </nav>
 
 
-
+<div class="container-fluid d-flex justify-content-between">
+<div class="container-fluid">
    <div  style="width:50%;height:100px;" class="container  text-center m-5"    ng-click="show_picture(4)">
     <p style="font-size:x-large;font-weight:700">Entire apartment hosted by Staaron</p>
     <p>2 guests · 1 bedroom · 1 bed · 1 bath</p>
@@ -59,80 +60,6 @@
 <div style="padding-left:65px;font-size:xx-large;">Like
 <div id="unlike" class="unlike1"></div>
 <div id="like" class="like1"></div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<script type="text/ng-template" id="reserve.html">
-  <div  style="width:800px;height:500px" class="card text-center  " >
-    <div class="card-header" style="font-size:x-large;font-weight:600">Contact Information</div>
-    <div class="card-footer align-content-center">
-      <div class="card-body " >
-        <p class="float-left m-2">Name:</p>
-        <p class="float-right m-2"> Li</p>
-      </div>
-      <div class="card-body " >
-        <p class="float-left m-2">Phone number:</p>
-        <p class="float-right m-2"> 13888888888</p>
-      </div>
-    <div class="card-body text-center" style="font-size:x-large;font-weight:600">$200/Day</div>
-    <button style="width:660px;" type="button" ng-click="show_picture(5)" class="tip2"  >
-        Reserve now
-        </button>
-  </div>
-    </div>
-  </script>
-    <script type="text/ng-template" id="rate_submit.html">
-      <div  style="width:800px;height:500px" class="card text-center  " >
-        If the room is full on the selected date, you can click on your avatar to select other houses [Location] Poly Daduhui is located in Huangpu Avenue, near Pazhou Exhibition Center, adjacent to Pazhou Bridge, and adjacent to NetEase Guangzhou headquarters and Sanqi Mutual Entertainment. The nearby Keyun Road Metro Station of Line 5 provides direct access to Zhujiang New Town K11 and Tianhe CBD. Canton Tower is 6.1 km away. It is 8 stations away from Changlong Zoo Metro. [Room type] 1 bedroom and 1 living room duplex Loft with full floor-to-ceiling windows, the room is equipped with a 1.8-meter bed, with a nice view, and a safe, comfortable and warm space welcomes you [Supporting facilities] 1. There are various convenient facilities within walking distance, convenience stores, supermarkets, and various restaurants for easy dining. 2. There is a park nearby for you to take a walk and entertain. The housing facilities are complete, the toiletries are complete, you can move in with a bag, and there is a kitchen in the room to cook by yourself. There is a washing machine in the room to wash clothes. The large living room gives you a relaxing and entertaining space. You can enjoy Ge Youtan on the soft sofa. If it is too hot in the summer, you can enjoy ice watermelon and iced drinks when you turn on the refrigerator in the room.
-        </div>
-    </script>
-    <script type="text/ng-template" id="signup1.html">
-      <img style="width:1000px;" src="../src/4.jpg" class="img-rounded">
-  </script>
-  <script type="text/ng-template" id="signup2.html">
-      <img style="width:1000px;" src="../src/5.jpg" class="img-rounded">
-  </script>
-  <script type="text/ng-template" id="signup3.html">
-      <img style="width:1000px;" src="../src/7.jpg" class="img-rounded">
-  </script>
-  <ul id="sPic" style="position:absolute;left:1180px;top:110px" class="list-group list-group-horizontal">
-      <li><a href="javascript:void(0)" title="图片一"><img style="position:absolute;width:350px" alt="图片一" src="../src/4.jpg" class="img-rounded" ng-click="show_picture(1)">{{navbutton1}}</a></li>
-      <li><a href="javascript:void(0)" title="图片二"><img style="position:absolute;left:360px;width:350px" alt="图片二" src="../src/5.jpg"class="img-rounded"ng-click="show_picture(2)">{{navbutton1}}</a></li>
-      <li><a href="javascript:void(0)" title="图片三"><img style="position:absolute;top:245px;width:350px" alt="图片三" src="../src/7.jpg"class="img-rounded"ng-click="show_picture(3)">{{navbutton1}}</a></li>
-      <li><a href="javascript:void(0)" title="图片三"><img style="position:absolute;left:360px;top:245px;width:350px" alt="图片三" src="../src/8.jpg"class="img-rounded"ng-click="show_picture(4)">{{navbutton1}}</a></li>
-  </ul>
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
 
 <div style="position:relative;width:50%"id="ratesystem" class="container m-5" >
     <h2>Comment</h2>
@@ -207,10 +134,10 @@
         </div>
       </form>
  
-    <button id="rate1" type="button" class="tip1"  >
+    <button id="rate1" type="button" class="btn-primary btn-lg"  >
       Rate for this apartment
      </button>
-     <button id="rate2" type="button"  class="tip1"  >
+     <button id="rate2" type="button"  class="btn-primary btn-lg"  >
       Submit
      </button>
     <p style="font-size:x-large;font-weight:700;color:#f66;margin:37px" id="thanks">
@@ -234,20 +161,65 @@
     </button>
   </div>
 </div>
+</div>
 
 
 
 
 
+<div class="container-fluid">
+<div>
+<a href="javascript:void(0)" title="图片一"><img style="width:100%" alt="图片一" src="../src/4.jpg" class="m-4 img-rounded" ng-click="show_picture(1)">{{navbutton1}}</a></li>
+</div>
 
- 
+
+
+<script type="text/ng-template" id="reserve.html">
+  <div  style="width:800px;height:500px" class="card text-center  " >
+    <div class="card-header" style="font-size:x-large;font-weight:600">Contact Information</div>
+    <div class="card-footer align-content-center">
+      <div class="card-body " >
+        <p class="float-left m-2">Name:</p>
+        <p class="float-right m-2"> Li</p>
+      </div>
+      <div class="card-body " >
+        <p class="float-left m-2">Phone number:</p>
+        <p class="float-right m-2"> 13888888888</p>
+      </div>
+    <div class="card-body text-center" style="font-size:x-large;font-weight:600">$200/Day</div>
+    <button style="width:660px;" type="button" ng-click="show_picture(5)" class="tip2"  >
+        Reserve now
+        </button>
+  </div>
+    </div>
+  </script>
+  <script type="text/ng-template" id="rate_submit.html">
+    <div  style="" class="card text-center  " >
+      If the room is full on the selected date, you can click on your avatar to select other houses [Location] Poly Daduhui is located in Huangpu Avenue, near Pazhou Exhibition Center, adjacent to Pazhou Bridge, and adjacent to NetEase Guangzhou headquarters and Sanqi Mutual Entertainment. The nearby Keyun Road Metro Station of Line 5 provides direct access to Zhujiang New Town K11 and Tianhe CBD. Canton Tower is 6.1 km away. It is 8 stations away from Changlong Zoo Metro. [Room type] 1 bedroom and 1 living room duplex Loft with full floor-to-ceiling windows, the room is equipped with a 1.8-meter bed, with a nice view, and a safe, comfortable and warm space welcomes you [Supporting facilities] 1. There are various convenient facilities within walking distance, convenience stores, supermarkets, and various restaurants for easy dining. 2. There is a park nearby for you to take a walk and entertain. The housing facilities are complete, the toiletries are complete, you can move in with a bag, and there is a kitchen in the room to cook by yourself. There is a washing machine in the room to wash clothes. The large living room gives you a relaxing and entertaining space. You can enjoy Ge Youtan on the soft sofa. If it is too hot in the summer, you can enjoy ice watermelon and iced drinks when you turn on the refrigerator in the room.
+      </div>
+  </script>
+  <script type="text/ng-template" id="signup1.html">
+      <img style="" src="../src/4.jpg" class="img-rounded">
+  </script>
+  <script type="text/ng-template" id="signup2.html">
+      <img style="width:1000px;" src="../src/5.jpg" class="img-rounded">
+  </script>
+  <script type="text/ng-template" id="signup3.html">
+      <img style="width:1000px;" src="../src/7.jpg" class="img-rounded">
+  </script>
+  <script type="text/ng-template" id="signup4.html">
+    <img style="width:1000px;" src="../src/6.jpg" class="img-rounded">
+</script>
 
 
 
-    <div style="position:absolute;left:1150px;top:580px;width:710px"  class="card text-center m-4 " >
+        
+
+
+    <div style=""  class="card text-center m-4 " >
         <div class="card-header" style="font-size:x-large;font-weight:600">Check-in Date</div>
-            <ul class="list-group list-group-horizontal">
-                <li style="width:355px;height:110px" class="list-group-item1">               
+            <div class="container-fluid d-flex justify-content-between">
+                <div style="width:50%;height:110px" class="container-fluid">               
                     <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                         Check-in:
                         <input class="form-control1"  type="text" value="" readonly>
@@ -255,8 +227,8 @@
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
                     <input type="hidden" id="dtp_input2" value="" /><br/>
-                  </li>
-                <li style="width:355px;height:110px" class="list-group-item1">              
+                </div>
+                <div style="width:50%;height:110px" class="container-fluid">              
                     <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                         Check-out:
                         <input class="form-control1"   type="text" value="" readonly>
@@ -264,8 +236,8 @@
                         <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                     </div>
                     <input type="hidden" id="dtp_input2" value="" /><br/>
-                </li>
-              </ul>
+                </div>
+            </div>
               <div class="card-body " >
                 <p class="float-left m-2">Basic fee</p>
                 <p class="float-right m-2"> 60$</p>
@@ -283,15 +255,16 @@
 
         <div class="card-footer">
             <div class="align-content-center ">
-                <button style="width:660px;" type="button" ng-click="show_picture(5)" class="tip2"  >
+                <button style="width:660px;" type="button" ng-click="show_picture(5)" class="btn-primary btn-lg"  >
                     Reserve
                     </button>
             </div>
         </div>
     </div>
 
+  </div>
 
-
+  </div>
 
 
 
