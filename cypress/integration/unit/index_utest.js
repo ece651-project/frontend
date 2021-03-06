@@ -1,0 +1,53 @@
+/// <reference types="cypress" />
+
+context('Index Unit Test', ()=>{
+    beforeEach(() => {
+        cy.visit('/index.html')
+    })
+
+    it('login test', ()=>{
+        cy.get('.nav-link').eq(0).click()
+        cy.get('.modal-footer>.btn-primary').click()
+        cy.get('.text-danger').eq(0).should('have.text', 'Email is required')
+        cy.get('.text-danger').eq(1).should('have.text', 'Password is required')
+        cy.get('input[name="login_email"]').type('s13fs')
+        cy.get('.text-danger').eq(0).should('have.text', 'Invalid email address')
+        cy.get('input[name="login_pwd"]').type('31213')
+        cy.get('.text-danger').eq(1).should('not.have.text')
+        cy.get('input[name="login_email"]').clear().type('s13fs@gmail.com')
+        cy.get('.modal-footer>.btn-primary').click()
+        cy.get('.text-danger').eq(0).should('have.text', 'Email not exist')
+        cy.get('input[name="login_email"]').clear().type('lilei@gmail.com')
+        cy.get('.modal-footer>.btn-primary').click()
+        cy.get('.text-danger').eq(1).should('have.text', 'Password incorrect')
+        cy.get('input[name="login_pwd"]').clear().type('leileili')
+        cy.get('.modal-footer>.btn-primary').click()
+        cy.get('.nav-link').eq(0).should('have.value', 'Profile')
+    })
+    it('logout test', ()=>{
+        cy.get('.nav-link').eq(1).click()
+        cy.get('.nav-link').eq(0).should('have.value', 'Log in')
+    })
+    it('signup test', ()=>{
+        cy.get('.nav-link').eq(1).click()
+        cy.get('.modal-footer>.btn-primary').should('be.disabled')
+        cy.get('input[name="signup_email"]').type('s13sf')
+        cy.get('.text-danger').eq(0).should('have.text', 'Invalid email address')
+        cy.get('input[name="signup_email"]').clear().type('lilei@gmail.com')
+        cy.get('.text-danger').eq(0).should('not.have.text')
+        cy.get('input[name="signup_name"]').clear()
+        cy.get('.text-danger').eq(1).should('have.text', 'Username is required')
+        cy.get('input[name="signup_name"]').clear().type('Li Lei')
+        cy.get('.text-danger').eq(1).should('not.have.text')
+        cy.get('input[name="signup_pwd"]').type('a1b2c3')
+        cy.get('.text-danger').eq(2).should('have.text', 'At lease 8 characters with 1 letter and 1 number')
+        cy.get('input[name="signup_pwd"]').clear()
+        cy.get('.text-danger').eq(2).should('have.text', 'Password is required')
+        cy.get('input[name="signup_pwd"]').clear().type('Asd4fgh7jkL')
+        cy.get('.text-danger').eq(2).should('not.have.text')
+        cy.get('.modal-footer>.btn-primary').click()
+        cy.get('.text-danger').eq(0).should('have.text', 'Email already exist')
+        cy.get('.text-danger').eq(1).should('have.text', 'Username already exist')
+    })
+
+})
