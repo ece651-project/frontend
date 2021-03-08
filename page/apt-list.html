@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="apt-list">
+<html ng-app="apt-list" style="overflow: hidden;">
     <head>
         <meta charset="utf-8">
         <title>Apartment list</title>
@@ -106,8 +106,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid">
-                    <dl class="info-region mt-5" style="padding: 1%;">
+                <div class="container-fluid mt-5 ml-0" style="height: 59%; width: 98%; overflow: auto;">
+                    <dl class="info-region" style="padding: 0.8%;">
                         <dt class="info" style="margin-bottom: 3%; font-size: 15px; font-weight: 500;">
                             <div class="box d-flex justify-content-between">
                                 <div class="info-image" style="width: 30%;">
@@ -301,7 +301,6 @@
         </script>
         
         <script src="../ctrl/common/httpservice.js"></script>
-        <script src="../ctrl/index.js"></script>
         <script src="../ctrl/datepicker.js"></script>
 
         <!-- script for select -->
