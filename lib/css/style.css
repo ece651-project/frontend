@@ -1,4 +1,8 @@
 
+.btn-warning{
+    background-color: #ffa500;
+    border-color: #ffa500;
+}
 .navbar .navbar-header{
     margin-left: 20px;
 }
@@ -12,13 +16,12 @@
 
 .index-back{
     background: no-repeat center center fixed;
-    background-image: url(../../src/3.jpg);
+    background-image: url(../../src/1.jpg);
     background-size: cover;
 }index-back
 .index-container{
     color: #fff;
-    padding-left: 20%;
-    padding-right: 20%;
+    padding: 0 30%;
     margin-top: 180px;
     text-align: center;
 }

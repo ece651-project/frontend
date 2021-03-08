@@ -1,0 +1,21 @@
+<div class="modal-header justify-content-center">
+    <h2 class="modal-title">Log in</h2>
+</div>
+<div class="modal-body">
+    <form class="container" name="login_form">
+        <div class="form-group mb-2">
+            <input class="form-control form-control-lg" type="email" placeholder="Enter email" name="login_email" ng-focus="f_ine()" ng-model="user_in.email" required>
+            <span class="text-danger pl-17p" ng-show="login_email_err()">{{login_email_errmsg()}}</span>
+        </div>
+        <div class="form-group mb-2">
+            <input class="form-control form-control-lg" type="{{typepwd ? 'text':'password'}}" placeholder="Enter password" name="login_pwd" ng-focus="f_inp()" ng-model="user_in.password" required>
+            <span class="form-control-eye" ng-show="!login_form.login_pwd.$error.required" ng-class="{'fa fa-eye': typepwd, 'fa fa-eye-slash': !typepwd}" ng-click="togglepwd()"></span>
+            <span class="text-danger pl-17p" ng-show="login_pwd_err()">{{login_pwd_errmsg()}}</span>
+        </div>
+    </form>
+</div>
+<div class="modal-footer justify-content-between">
+    <button class="btn btn-link invisible" type="button">Create Account</button>
+    <button class="btn btn-primary" type="button" ng-disabled="login_disable()" ng-click="login_click()">Login</button>
+    <button class="btn btn-link" type="button" ng-click="to_signup()">Create Account</button>
+</div>
