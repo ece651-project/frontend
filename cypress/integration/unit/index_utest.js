@@ -22,11 +22,11 @@ context('Index Unit Test', ()=>{
         cy.get('.text-danger').eq(1).should('have.text', 'Password incorrect')
         cy.get('input[name="login_pwd"]').clear().type('leileili')
         cy.get('.modal-footer>.btn-primary').click()
-        cy.get('.nav-link').eq(0).should('have.value', 'Profile')
+        cy.get('.nav-link').eq(0).should('have.text', 'Profile')
     })
     it('logout test', ()=>{
         cy.get('.nav-link').eq(1).click()
-        cy.get('.nav-link').eq(0).should('have.value', 'Log in')
+        cy.get('.nav-link').eq(0).should('have.text', 'Log in')
     })
     it('signup test', ()=>{
         cy.get('.nav-link').eq(1).click()
