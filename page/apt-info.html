@@ -18,7 +18,7 @@
 		<link href="../lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 	</head>
 
-	<body ng-controller="info_ctrl" class="apt-back">
+	<body ng-controller="info_ctrl">
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 			<div class="navbar-header">
 				<a class="navbar-brand">XxxX</a>
@@ -39,7 +39,7 @@
 					<h2>Entire apartment hosted by Staaron</h2>
 					<p>2 guests · 1 bedroom · 1 bed · 1 bath</p>
 				</div>
-				<div style="width:90%;" class="container scrollbar-deep text-scrollbar p-4 m-4 backgroundcolor-blue">
+				<div style="width:90%;" class="container scrollbar-deep text-scrollbar p-4 m-4 bc-grey">
 					<p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
 						qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan
 						mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
@@ -60,7 +60,7 @@
 						qui. Tumblr farm-to-table bicycle rights whatever. </p>
 				</div>
 
-				<div style="height:500px;width:90%;" class="container m-4 p-2 backgroundcolor-blue">
+				<div style="height:500px;width:90%;" class="container m-4 p-2">
 					<h2 class="mt-2 ml-3">Comment</h2>
 					<div class="m-2">
 						<button id="rate1" type="button" class="tip0">
@@ -80,7 +80,7 @@
 						</button>
 					</div>
 					<div style="height:70%;" class="container scrollbar-deep text-scrollbar">
-						<div class="card backgroundcolor-blue">
+						<div class="card">
 							<div class="card-body ">
 								<div class="d-flex flex-row ml-2 mb-2 align-items-center">
 									<div region="west" class="west" style="width: 100px;"><img
@@ -136,16 +136,11 @@
 					</div>
 				</div>
 
-				<div style="width:90%;" id="ratesystem" class="container m-3 p-2">
-					<table class="table table-hover">
-						<tbody id=table_show>
-							<tr>
-								<td style="font-size:x-large">Star </td>
-								<td class="float-right"><input id="rate_star1" type="number" class="rating1" data-caption=""
-										value="4" data-min="1" data-max="5" /></td>
-							</tr>
-						</tbody>
-					</table>
+				<div style="width:90%;" id="ratesystem" class="container m-3 p-2 border-top">
+					<div class="d-flex justify-content-between p-2">
+						<Label style="font-size: x-large;">Star</Label>
+						<input id="rate_star1" type="number" class="rating1" data-caption="" value="4" data-min="1" data-max="5"/>
+					</div>
 					<form id="comment1">
 						<div class="input-group-lg input-group-prepend ">
 							<div class="input-group-text">
@@ -154,10 +149,10 @@
 							<input type="text" class="form-control" placeholder="Please enter your comment here">
 						</div>
 					</form>
-					<button id="rate1" type="button" class="btn-primary btn-lg">
+					<button id="rate1" type="button" class="btn btn-primary btn-lg">
 						Rate for this apartment
 					</button>
-					<button id="rate2" type="button" class="btn-primary btn-lg">
+					<button id="rate2" type="button" class="btn btn-primary btn-lg">
 						Submit
 					</button>
 					<h2 style="color:#f66;margin:37px" id="thanks">
@@ -167,13 +162,13 @@
 			</div>
 
 			<div class="container-fluid">
-				<div>
+				<div class="text-center">
 					<a href="javascript:void(0)">
-						<img style="height: 500px; width:92%" alt="图片一" src="../src/4.jpg" class="m-4 img-rounded" ng-click="show_picture(1)">
+						<img style="max-height: 500px;" alt="图片一" src="../src/4.jpg" class="m-4 img-rounded" ng-click="show_picture(1)">
 					</a>
 				</div>
 
-				<div class="card text-center m-4 backgroundcolor-blue">
+				<div class="card text-center m-4 bc-grey">
 					<div class="card-header">
 						<h3>Details</h3>
 					</div>
@@ -222,7 +217,7 @@
 
 					<div class="card-footer">
 						<div class="align-content-center ">
-							<button style="width:80%;" type="button" ng-click="show_picture(5)" class="btn-primary btn-lg">
+							<button style="width:80%;" type="button" ng-click="show_picture(5)" class="btn btn-primary btn-lg">
 								Reserve
 							</button>
 						</div>

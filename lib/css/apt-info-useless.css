@@ -80,19 +80,6 @@
     background-color: #f66;
 }
 
-.tip2 {
-    margin-right: 18px !important;
-    margin-top: 10px !important;
-    border-radius: 15px !important;
-    border: none !important;
-    outline: none !important;
-    padding: 0.675rem 2rem;
-    font-weight:500;
-    font-size:x-large;
-    color: #f2f5f1;
-    background-color: #f84d4d;
-}
-
 .list-group-item1 {
     margin-bottom:5px;
     position: relative;

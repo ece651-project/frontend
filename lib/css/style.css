@@ -26,10 +26,6 @@
     text-align: center;
 }
 
-.apt-back{
-    background-color:#eeeeee;
-}
-
 .pl-13p {
     padding-left: 13px;
 }
@@ -84,6 +80,19 @@
     background-color: #d6fcf2;
 }
 
+.tip2 {
+    margin-right: 18px !important;
+    margin-top: 10px !important;
+    border-radius: 15px !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0.675rem 2rem;
+    font-weight:500;
+    font-size:x-large;
+    color: #f2f5f1;
+    background-color: #f84d4d;
+}
+
 .scrollbar-deep::-webkit-scrollbar {
     width: 9px;
     background-color: #F5F5F5;
@@ -104,8 +113,8 @@
     height: 75vh;
 }
 
-.backgroundcolor-blue{
-    background-color:rgb(232, 250, 252);
+.bc-grey{
+    background-color:rgb(248, 248, 248);
 }
 
 
@@ -128,7 +137,7 @@
     font-size: 15px; 
     line-height: 35px; 
     background:#fff; 
-    color:#999; 
+    color:#666; 
     text-indent: 10px; 
     border: none; 
     background: url(../../src/xiala.png) 35px no-repeat #fff; 
@@ -226,12 +235,11 @@ ul,li {
     color: black;
 }
 
-.mapimage { 
-    border-radius: 3px; 
-    box-shadow:rgba(0,0,0,0.15) 0 0 8px; 
-    background:#FBFBFB; 
-    border: 1px solid #ddd; 
-    margin: 10px auto; 
+.mapimage {
+    border-radius: 3px;
+    box-shadow:rgba(0,0,0,0.15) 0 0 8px;
+    background:#FBFBFB;
+    border: 1px solid #ddd;
     padding: 5px;
 }
 

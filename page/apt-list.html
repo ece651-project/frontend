@@ -13,7 +13,7 @@
         <link href="../lib/css/bootstrap.css" rel="stylesheet" type="text/css">
         <link href="../lib/css/style.css" rel="stylesheet" type="text/css">
     </head>
-    <body ng-controller="list_ctrl" class="apt-back">
+    <body ng-controller="list_ctrl">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="navbar-header">
                 <a class="navbar-brand">XxxX</a>
@@ -29,7 +29,7 @@
         </nav>
 
         <div class="container-fluid d-flex justify-content-between">
-            <div class="container-fluid" style="width: 70%;">
+            <div class="container-fluid" style="width: 69%;">
                 <div class="input-group input-group-lg pt-5">
                     <input class="form-control" type="text" placeholder="Type to search" name="searchbar">
                     <div class="input-group-append">
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="container-fluid">
-                <div class="selectbox mt-5">
+                <div class="selectbox mt-5 border">
                     <div class="selediv mt-2 ml-0">
                         <div class="selemenu">
                             <span class="sqinput">Waterloo</span>
@@ -103,9 +103,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="container-fluid mt-5 ml-0 scrollbar-deep list-scrollbar">
-                    <dl class="info-region">
-                        <dt class="info" ng-repeat="x in list" style="margin-bottom: 3%; font-size: 15px; font-weight: 500;">
+                <div class="container-fluid mt-5 ml-0 scrollbar-deep list-scrollbar border bc-grey">
+                    <dl class="info-region mt-3">
+                        <dt class="info border-bottom" ng-repeat="x in list" style="margin-bottom: 3%; font-size: 15px; font-weight: 500;">
                             <div class="box d-flex justify-content-between">
                                 <div class="info-image text-center" style="width: 30%;">
                                     <img src="../src/house.jpg" alt="house-image" style="max-height: 150px;">
