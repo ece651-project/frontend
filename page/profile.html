@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html ng-app="profile">
+    <head>
+        <meta charset="uft-8">
+        <title>XxX</title>
+        <script src="../lib/js/angular.js"></script>
+        <script src="../lib/js/angular-animate.js"></script>
+        <script src="../lib/js/angular-sanitize.js"></script>
+        <script src="../lib/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
+        <link href="../lib/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="../lib/css/bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="../lib/css/style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body ng-controller="profile_ctrl">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="navbar-header">
+                <a class="navbar-brand">XxxX</a>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="to_login()">{{navbutton1}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="to_signup()">{{navbutton2}}</a>
+                </li>
+            </ul>
+        </nav>
+        <div class="profile-container d-flex justify-content-between">
+            <div class="container" style="width: 30%;">
+                <div class="card border-top-0 border-left-0 border-right-0">
+                    <img class="card-img-top rounded-circle" src="../src/profile.png" alt="profile_image">
+                    <div class="card-body text-center">
+                        <h4 class="card-title">{{user.nickname}}</h4><br>
+                        <span class="fa fa-envelope"> {{user.email}}</span><br>
+                        <span class="fa fa-phone-square"> {{user.phoneNum}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <uib-tabset justified="true">
+                    <uib-tab heading="For Rent">
+                        <div class="mt-3 border-bottom pre-scrollable">
+                            <table class="table" style="table-layout: fixed;">
+                                <tr>
+                                    <td>
+                                        <img class="table-image" src="../src/2.jpg" alt="">
+                                    </td>
+                                    <td>
+                                        <ul class="fa-ul text-center mb-0">
+                                            <li>
+                                                <i class="fa-li fa fa-map-marker"></i>
+                                                <p class="mb-1" style="overflow-x: auto;">addr</p>
+                                            </li>
+                                            <li>
+                                                <i class="fa-li fa fa-home"></i>
+                                                <p class="mb-1">type</p>
+                                            </li>
+                                            <li>
+                                                <i class="fa-li fa fa-calendar"></i>
+                                                <p class="mb-1">date</p>
+                                            </li>
+                                            <li>
+                                                <i class="fa-li fa fa-usd"></i>
+                                                <p class="mb-1">cads</p>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-primary">View</button><br>
+                                        <button class="btn btn-primary mt-3">Update</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="mt-3 text-center" ng-show="false">
+                            <button class="btn btn-lg btn-primary">Add New</button>
+                        </div>
+                        <div class="container mt-3" ng-show="true">
+                            <p style="margin-bottom: 8rem;">Images</p>
+                            <div class="d-flex justify-content-start">
+                                <div class="w-50 pr-5">
+                                    <label for="address">Address</label>
+                                    <span class="text-danger pl-5" ng-show="addr_err()">{{addr_errmsg}}</span>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Address Line 1" name="addr1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Address Line 2" name="addr2">
+                                    </div>
+                                    <div class="form-group d-flex">
+                                        <input class="form-control" type="text" placeholder="City" name="city" required>
+                                        <select class="form-control" id="province" required>
+                                            <option disabled selected hidden>Province/Territory</option>
+                                            <option>AB</option><option>BC</option><option>MB</option><option>NB</option>
+                                            <option>NL</option><option>NT</option><option>NS</option><option>NU</option>
+                                            <option>ON</option><option>PE</option><option>QC</option><option>SK</option><option>YT</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="text" placeholder="Postal Code/ZIP" name="zip" required>
+                                    </div>
+                                </div>
+                                <div class="w-50 pr-5">
+                                    <div class="form-group form-inline">
+                                        <label class="justify-content-start w-25">Type</label>
+                                        <select class="form-control w-75" id="type" required>
+                                            <option>Studio</option>
+                                        </select>
+                                        <span class="text-danger" ng-show="type_err()">{{type_errmsg}}</span>
+                                    </div>
+                                    <div class="form-group form-inline">
+                                        <label class="justify-content-start w-25">Period</label>
+                                        <select class="form-control w-25" id="period_start" required>
+
+                                        </select>
+                                        <label class="w-25">~</label>
+                                        <select class="form-control w-25" id="period_end">
+
+                                        </select>
+                                        <span class="text-danger" ng-show="period_err()">{{period_errmsg}}</span>
+                                    </div>
+                                    <div class="form-group form-inline mt-2">
+                                        <label class="justify-content-start w-25">Rent</label>
+                                        <div class="input-group w-75">
+                                            <input class="form-control" type="text">
+                                            <span class="input-group-append input-group-text">CAD</span>
+                                        </div>
+                                        <span class="text-danger" ng-show="rent_err()">{{rent_errmsg}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" id="description" rows="3"></textarea>
+                            </div>
+                            <div class="d-flex justify-content-around">
+                                <button class="btn btn-lg btn-primary">Submit</button>
+                                <button class="btn btn-lg btn-primary">Cancel</button>
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Favourite">
+                        <div class="mt-3">
+                            <p>gerwe</p>
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Edit Profile">
+                        <div class="mt-3">
+                            <p>dsa</p>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+
+        <script src="../ctrl/profile.js"></script>
+
+    </body>
+</html>
