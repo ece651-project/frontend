@@ -14,7 +14,7 @@
     background: no-repeat center center fixed;
     background-image: url(../../src/3.jpg);
     background-size: cover;
-}
+}index-back
 .index-container{
     color: #fff;
     padding-left: 20%;
@@ -29,7 +29,7 @@
 .pl-17p {
     padding-left: 17px;
 }
-
+ 
 .modal-body .form-group .ng-hide {
     display: block!important;
     visibility: hidden;
@@ -47,3 +47,180 @@
     top: 15.9rem;
     right: 2.6rem;
 }
+.empty-star{
+    overflow: hidden; width: 19px; height: 19px; 
+    background-image: url(../../src/empty_star.png);
+    display: inline-block;
+    line-height: inherit;
+    vertical-align: top;
+    margin-top: 2px;
+}
+
+.full-star {
+    overflow: hidden; width: 19px; height: 19px;
+    background-image: url(../../src/full_star.png); 
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2px;
+}
+
+.unlike1{
+    overflow: hidden; width: 19px; height: 19px; 
+    background-image: url(../../src/empty_star.png);
+    display: inline-block;
+    line-height: inherit;
+    vertical-align: top;
+    margin-top: 2px;
+}
+
+.like1 {
+    overflow: hidden; width: 19px; height: 19px;
+    background-image: url(../../src/full_star.png); 
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2px;
+}
+
+.rating-input {
+    height: 25px;
+}
+
+.border0 {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    margin: 6px;
+  }
+
+.rating-caption {
+    margin-left: 10px;
+    line-height: 25px;
+    width: 50px;
+    display: inline-block;
+    color: #EB6425;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.tip0 {
+    margin: 12px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0.375rem 1.15rem;
+    font-weight:500;
+    font-size:middle;
+    color: #1e9b12;
+    background-color: #d6fcf2;
+}
+
+.card1 {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 2rem;
+  }
+
+.container1 {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 20px;
+    
+  }
+
+.table1 {
+    width: 100%;
+    margin-bottom: 0.75rem;
+    padding:10px;
+    color: #212529;
+  }
+
+.tip1 {
+    margin: 24px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0.375rem 1.55rem;
+    font-weight:500;
+    font-size:large;
+    color: rgb(255, 255, 255);
+    background-color: #f66;
+}
+
+.tip2 {
+    margin-right: 18px !important;
+    margin-top: 10px !important;
+    border-radius: 15px !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0.675rem 2rem;
+    font-weight:500;
+    font-size:x-large;
+    color: #f2f5f1;
+    background-color: #f84d4d;
+}
+
+.list-group-item1 {
+    margin-bottom:5px;
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    background-color: #fff;
+  }
+
+.form-control1 {
+    margin:4px;
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+
+
+
+
+.star_margin {
+    clear: both;
+    margin-top: 50px;
+}
+
+
+.star_style {
+  font-size: 20px;
+  padding: 50px;
+}
+
+
+    
+    .scrollbar-deep-purple::-webkit-scrollbar {
+    width: 9px;
+    background-color: #F5F5F5; }
+    
+    .scrollbar-deep-purple::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #b8b6bd; }
+
+    .example-1 {
+    position: relative;
+    overflow-y: scroll;
+    height: 200px; }
