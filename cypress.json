@@ -1,5 +1,6 @@
 {
     "projectId": "fw9821",
     "ignoreTestFiles": "**/examples/*.js",
+    "screenshotOnRunFailure": false,
     "video": false
 }
