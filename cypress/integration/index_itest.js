@@ -38,7 +38,7 @@ context('Index Integration Test', ()=>{
         cy.get('.modal-footer>.btn-primary').click()
         cy.get('.text-danger').eq(1).should('have.text', 'Password incorrect')
         cy.get('input[name="login_pwd"]').clear().type('123123aa')
-        cy.get('.modal-footer>.btn-primary').click()
+        cy.get('.modal-footer>.btn-primary').click().wait(1000)
         cy.get('.nav-link').eq(0).should('have.text', 'Profile')
 
     })
