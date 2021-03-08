@@ -4,8 +4,8 @@
 <html ng-app="apt-info">
     <head>
         <meta charset="uft-8">
-        <title>XXX</title>
-        <script src="../lib/js/jquery.min.js"></script>
+        <title>Apartment Info</title>
+        <script src="../lib/js/jquery.js"></script>
         <script src="../lib/js/angular.js"></script>
         <script src="../lib/js/angular-animate.js"></script>
         <script src="../lib/js/angular-sanitize.js"></script>
@@ -21,6 +21,10 @@
         <link href="../lib/css/style.css" rel="stylesheet" type="text/css">
         <link href="../lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">  
     </head>
+    <style>
+      div{      font-size:16px;}
+
+    </style>
     <body ng-controller="index_ctrl">
 
 
@@ -51,7 +55,7 @@
 <div class="container-fluid d-flex justify-content-between">
 <div class="container-fluid">
    <div  style="width:90%;height:100px;" class="container  text-center m-4"    ng-click="show_picture(4)">
-    <h2>Entire apartment hosted by Staaron</h2>
+    <h5>Entire apartment hosted by Staaron</h5>
     <p>2 guests · 1 bedroom · 1 bed · 1 bath</p>
 </div>
 
@@ -70,7 +74,7 @@
     </div>
 
     <div style="width:90%;  " class="p-3 m-4">
-        <h4>Address</h4>
+        <h5>Address</h5>
         <p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
           qui. Tumblr farm-to-table bicycle rights whatever. </p>
       </div>
@@ -102,15 +106,15 @@
         </div>
       </form>
  
-    <button id="rate1" type="button" class="btn-primary btn-lg"  >
+    <button id="rate1" type="button" class="btn-primary btn"  >
       Rate for this apartment
      </button>
-     <button id="rate2" type="button"  class="btn-primary btn-lg"  >
+     <button id="rate2" type="button"  class="btn-primary btn"  >
       Submit
      </button>
-    <h2 style="color:#f66;margin:37px" id="thanks">
+    <h5 style="color:#f66;margin:37px" id="thanks">
          Thanks for replying!
-    </h2>
+    </h5>
 
 </div>
 
@@ -118,7 +122,7 @@
 
 
 <div style="height:500px;width:90%;"  class="container m-4 p-2 backgroundcolor-blue" >
-    <h2 class="mt-2 ml-3">Comment</h2>
+    <h5 class="mt-2 ml-3">Comment</h5>
     <div class="m-2">
         <button id="rate1" type="button" class="tip0"  >
             Clean
@@ -141,7 +145,7 @@
     <div class="card-body " >
             <div class="d-flex flex-row ml-2 mb-2 align-items-center">
                 <div region="west" class="west" style="width: 100px;"><img style="width:60px;height:60px" src="../src/4.jpg" class=  "rounded-circle  float-left m-2"></div>
-                <h4>Sam</h4>
+                <h6>Sam</h6>
               </div>
             <div class="float-left pl-3">blr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan.
               mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
@@ -152,7 +156,7 @@
           <div class="card-body " >
             <div class="d-flex flex-row ml-2 mb-2 align-items-center">
                 <div region="west" class="west" style="width: 100px;"><img style="width:60px;height:60px" src="../src/4.jpg" class=  "rounded-circle  float-left m-2"></div>
-                <h4>Jerry</h4>
+                <h6>Jerry</h6>
               </div>
             <div class="float-left pl-3">iyeh carles cardigan.
               mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
@@ -163,7 +167,7 @@
           <div class="card-body " >
             <div class="d-flex flex-row ml-2 mb-2 align-items-center">
                 <div region="west" class="west" style="width: 100px;"><img style="width:60px;height:60px" src="../src/4.jpg" class=  "rounded-circle  float-left m-2"></div>
-                <h4>Tom</h4>
+                <h5>Tom</h5>
               </div>
             <div class="float-left pl-3">
               mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
@@ -172,8 +176,8 @@
           </div>
 
 
-      <div class="card-body text-center">            <button style="width:90%" type="button"  class="btn-primary btn-lg"  >
-        <h4>More</h4>
+      <div class="card-body text-center">            <button style="width:90%" type="button"  class="btn-primary btn"  >
+        More
         </button></div>
     </div>
   </div>
@@ -194,7 +198,7 @@
 
 
     <div   class="card text-center m-4 backgroundcolor-blue" >
-        <div class="card-header"><h3>Reserve here</h3></div>
+        <div class="card-header"><h5>Detail infomation</h5></div>
             <div class="container-fluid d-flex justify-content-between pt-3">
                 <div style="width:50%;height:110px" class="container-fluid">               
                     <div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
@@ -219,20 +223,27 @@
                 <p class="float-left m-2">Basic fee</p>
                 <p class="float-right m-2"> 60$</p>
               </div>
-              <div class="card-body " >
+<!--            <div class="card-body " >
                 <p class="float-left m-2">Tax fee</p>
                 <p class="float-right m-2"> 80$</p>
               </div>
               <div class="card-body " >
                 <p class="float-left m-2">Cleaning fee</p>
                 <p class="float-right m-2"> 60$</p>
-              </div>
-
-          <div class="card-body"><h3>$200/Day</h3></div>
+              </div>-->  
+                <div class="card-body " >
+                  <p class="float-left m-2">Room type:</p>
+                  <p class="float-right m-2"> 2 bedroom - large window - washing </p>
+                </div>
+                <div class="card-body " >
+                  <p class="float-left m-2">Contact infomation:</p>
+                  <p class="float-right m-2"> 13888888888</p>
+                </div>
+          <div class="card-body"><h5>$200/Day</h5></div>
 
         <div class="card-footer">
             <div class="align-content-center ">
-                <button style="width:80%;" type="button" ng-click="show_picture(5)" class="btn-primary btn-lg"  >
+                <button style="width:80%;" type="button" ng-click="show_picture(5)" class="btn-primary btn"  >
                     Reserve
                     </button>
             </div>
@@ -250,7 +261,7 @@
   <script type="text/ng-template" id="reserve.html" >
     <div  style="width:800px;height:500px" class="card text-center align-self-center " >
 
-      <div class="card-header "><h4>Contact Information</h4></div>
+      <div class="card-header "><h5>Contact Information</h5></div>
       <div class="card-footer align-content-center">
         <div class="card-body " >
           <p class="float-left m-2">Name:</p>
