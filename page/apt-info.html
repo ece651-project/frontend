@@ -3,11 +3,11 @@
 	<head>
 		<meta charset="uft-8">
 		<title>Apartment Info</title>
-		<script src="../lib/js/jquery.js"></script>
 		<script src="../lib/js/angular.js"></script>
 		<script src="../lib/js/angular-animate.js"></script>
 		<script src="../lib/js/angular-sanitize.js"></script>
 		<script src="../lib/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
+		<script src="../lib/js/jquery.min.js"></script>
 		<script src="../lib/js/bootstrap-rating-input.js"></script>
 		<script src="../lib/js/bootstrap-rating-input1.js"></script>
 		<script src="../lib/js/bootstrap-datetimepicker.fr.js"></script>
@@ -17,9 +17,7 @@
 		<link href="../lib/css/style.css" rel="stylesheet" type="text/css">
 		<link href="../lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 	</head>
-    <style>
-		div{font-size:16px;}
-	</style>
+    
 	<body ng-controller="info_ctrl">
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 			<div class="navbar-header">
@@ -129,11 +127,9 @@
 								</div>
 							</div>
 
-
-							<div class="card-body text-center"> <button style="width:90%" type="button"
-									class="btn-primary btn">
-									More
-								</button></div>
+							<div class="card-body text-center">
+								<button class="btn btn-primary" style="width:90%" type="button">More</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -151,10 +147,10 @@
 							<input type="text" class="form-control" placeholder="Please enter your comment here">
 						</div>
 					</form>
-					<button id="rate1" type="button" class="btn btn-primary btn">
+					<button id="rate1" type="button" class="btn btn-primary">
 						Rate for this apartment
 					</button>
-					<button id="rate2" type="button" class="btn btn-primary btn">
+					<button id="rate2" type="button" class="btn btn-primary">
 						Submit
 					</button>
 					<h4 style="color:#f66;margin:37px" id="thanks">
@@ -219,7 +215,7 @@
 
 					<div class="card-footer">
 						<div class="align-content-center ">
-							<button style="width:80%;" type="button" ng-click="show_picture(5)" class="btn btn-primary btn">
+							<button style="width:80%;" type="button" ng-click="show_picture(5)" class="btn btn-primary">
 								Reserve
 							</button>
 						</div>
