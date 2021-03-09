@@ -51,6 +51,8 @@ context('Index Unit Test', ()=>{
         cy.get('.text-danger').eq(2).should('not.have.text')
         cy.get('.modal-footer>.btn-primary').click()
         cy.get('.text-danger').eq(0).should('have.text', 'Email already exist')
+        cy.get('input[name="signup_email"]').type('s')
+        cy.get('.modal-footer>.btn-primary').click()
         cy.get('.text-danger').eq(1).should('have.text', 'Username already exist')
     })
 

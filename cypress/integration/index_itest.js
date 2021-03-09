@@ -24,9 +24,8 @@ context('Index Integration Test', ()=>{
         cy.get('.text-danger').eq(2).should('not.have.text')
         cy.get('.modal-footer>.btn-primary').click()
         cy.get('.text-danger').eq(0).should('have.text', 'Email already exist')
-        cy.get('.text-danger').eq(1).should('have.text', 'Username already exist')
 
-        cy.get('.btn-link').eq(1).click()
+        cy.get('.btn-link').eq(1).click().wait(500)
         cy.get('.modal-footer>.btn-primary').click()
         cy.get('.text-danger').eq(0).should('have.text', 'Email is required')
         cy.get('.text-danger').eq(1).should('have.text', 'Password is required')
