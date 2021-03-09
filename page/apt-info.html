@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="uft-8">
 		<title>Apartment Info</title>
-		<script src="../lib/js/jquery.min.js"></script>
+		<script src="../lib/js/jquery.js"></script>
 		<script src="../lib/js/angular.js"></script>
 		<script src="../lib/js/angular-animate.js"></script>
 		<script src="../lib/js/angular-sanitize.js"></script>
@@ -17,7 +17,9 @@
 		<link href="../lib/css/style.css" rel="stylesheet" type="text/css">
 		<link href="../lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 	</head>
-
+    <style>
+		div{font-size:16px;}
+	</style>
 	<body ng-controller="info_ctrl">
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 			<div class="navbar-header">
@@ -36,7 +38,7 @@
 		<div class="container-fluid d-flex justify-content-between">
 			<div class="container-fluid">
 				<div style="width:90%;height:100px;" class="container text-center m-4" ng-click="show_picture(4)">
-					<h2>Entire apartment hosted by Staaron</h2>
+					<h4>Entire apartment hosted by Staaron</h4>
 					<p>2 guests · 1 bedroom · 1 bed · 1 bath</p>
 				</div>
 				<div style="width:90%;" class="container scrollbar-deep text-scrollbar p-4 m-4 bc-grey">
@@ -55,27 +57,27 @@
 				</div>
 
 				<div style="width:90%;" class="p-3 m-4">
-					<h4>Address</h4>
+					<h6>Address</h6>
 					<p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
 						qui. Tumblr farm-to-table bicycle rights whatever. </p>
 				</div>
 
 				<div style="height:500px;width:90%;" class="container m-4 p-2">
-					<h2 class="mt-2 ml-3">Comment</h2>
+					<h4 class="mt-2 ml-3">Comment</h4>
 					<div class="m-2">
-						<button id="rate1" type="button" class="tip0">
+						<button type="button" class="tip0">
 							Clean
 						</button>
-						<button id="rate1" type="button" class="tip0">
+						<button type="button" class="tip0">
 							Safe
 						</button>
-						<button id="rate1" type="button" class="tip0">
+						<button type="button" class="tip0">
 							Pet
 						</button>
-						<button id="rate1" type="button" class="tip0">
+						<button type="button" class="tip0">
 							Large Room
 						</button>
-						<button id="rate1" type="button" class="tip0">
+						<button type="button" class="tip0">
 							Double Floor
 						</button>
 					</div>
@@ -86,7 +88,7 @@
 									<div region="west" class="west" style="width: 100px;"><img
 											style="width:60px;height:60px" src="../src/4.jpg"
 											class="rounded-circle  float-left m-2"></div>
-									<h4>Sam</h4>
+									<h6>Sam</h6>
 								</div>
 								<div class="float-left pl-3">blr farm-to-table bicycle rights whatever. Anim keffiyeh carles
 									cardigan.
@@ -102,7 +104,7 @@
 									<div region="west" class="west" style="width: 100px;"><img
 											style="width:60px;height:60px" src="../src/4.jpg"
 											class="rounded-circle  float-left m-2"></div>
-									<h4>Jerry</h4>
+									<h6>Jerry</h6>
 								</div>
 								<div class="float-left pl-3">iyeh carles cardigan.
 									mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg
@@ -117,7 +119,7 @@
 									<div region="west" class="west" style="width: 100px;"><img
 											style="width:60px;height:60px" src="../src/4.jpg"
 											class="rounded-circle  float-left m-2"></div>
-									<h4>Tom</h4>
+									<h6>Tom</h6>
 								</div>
 								<div class="float-left pl-3">
 									mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg
@@ -129,8 +131,8 @@
 
 
 							<div class="card-body text-center"> <button style="width:90%" type="button"
-									class="btn-primary btn-lg">
-									<h4>More</h4>
+									class="btn-primary btn">
+									More
 								</button></div>
 						</div>
 					</div>
@@ -149,28 +151,28 @@
 							<input type="text" class="form-control" placeholder="Please enter your comment here">
 						</div>
 					</form>
-					<button id="rate1" type="button" class="btn btn-primary btn-lg">
+					<button id="rate1" type="button" class="btn btn-primary btn">
 						Rate for this apartment
 					</button>
-					<button id="rate2" type="button" class="btn btn-primary btn-lg">
+					<button id="rate2" type="button" class="btn btn-primary btn">
 						Submit
 					</button>
-					<h2 style="color:#f66;margin:37px" id="thanks">
+					<h4 style="color:#f66;margin:37px" id="thanks">
 						Thanks for replying!
-					</h2>
+					</h4>
 				</div>
 			</div>
 
 			<div class="container-fluid">
 				<div class="text-center">
 					<a href="javascript:void(0)">
-						<img style="max-height: 500px;" alt="图片一" src="../src/4.jpg" class="m-4 img-rounded" ng-click="show_picture(1)">
+						<img style="max-width:90%;max-height: 500px;" alt="图片一" src="../src/4.jpg" class="m-4 img-rounded" ng-click="show_picture(1)">
 					</a>
 				</div>
 
 				<div class="card text-center m-4 bc-grey">
 					<div class="card-header">
-						<h3>Details</h3>
+						<h5>Details</h5>
 					</div>
 					<!--<div class="container-fluid d-flex justify-content-between pt-3">
 						<div style="width:50%;height:110px" class="container-fluid">
@@ -217,7 +219,7 @@
 
 					<div class="card-footer">
 						<div class="align-content-center ">
-							<button style="width:80%;" type="button" ng-click="show_picture(5)" class="btn btn-primary btn-lg">
+							<button style="width:80%;" type="button" ng-click="show_picture(5)" class="btn btn-primary btn">
 								Reserve
 							</button>
 						</div>
@@ -231,7 +233,7 @@
 
 		<script type="text/ng-template" id="reserve.html">
 			<div  style="width:800px;height:500px" class="card text-center align-self-center " >
-				<div class="card-header "><h4>Contact Information</h4></div>
+				<div class="card-header "><h6>Contact Information</h6></div>
 				<div class="card-footer align-content-center">
 					<div class="card-body " >
 						<p class="float-left m-2">Name:</p>
