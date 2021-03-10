@@ -21,11 +21,15 @@ context('Index Unit Test', ()=>{
         cy.get('.modal-footer>.btn-primary').click()
         cy.get('.text-danger').eq(1).should('have.text', 'Password incorrect')
         cy.get('input[name="login_pwd"]').clear().type('leileili')
-        cy.get('.modal-footer>.btn-primary').click()
+        cy.get('.modal-footer>.btn-primary').click().wait(1000)
         cy.get('.nav-link').eq(0).should('have.text', 'Profile')
     })
     it('logout test', ()=>{
-        cy.get('.nav-link').eq(1).click()
+        cy.get('.nav-link').eq(0).click()
+        cy.get('input[name="login_email"]').clear().type('lilei@gmail.com')
+        cy.get('input[name="login_pwd"]').clear().type('leileili')
+        cy.get('.modal-footer>.btn-primary').click().wait(1000)
+        cy.get('.nav-link').eq(1).click().wait(1000)
         cy.get('.nav-link').eq(0).should('have.text', 'Log in')
     })
     it('signup test', ()=>{
@@ -47,6 +51,8 @@ context('Index Unit Test', ()=>{
         cy.get('.text-danger').eq(2).should('not.have.text')
         cy.get('.modal-footer>.btn-primary').click()
         cy.get('.text-danger').eq(0).should('have.text', 'Email already exist')
+        cy.get('input[name="signup_email"]').type('s')
+        cy.get('.modal-footer>.btn-primary').click()
         cy.get('.text-danger').eq(1).should('have.text', 'Username already exist')
     })
 

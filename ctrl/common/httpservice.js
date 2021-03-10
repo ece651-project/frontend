@@ -1,4 +1,4 @@
-const url = 'http://13.229.54.197:8080';
+const url = 'http://18.140.13.225:8080';
 
 (function () {
     'use strict';
