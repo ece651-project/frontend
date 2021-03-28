@@ -7,57 +7,57 @@
 		<script src="../lib/js/angular-animate.js"></script>
 		<script src="../lib/js/angular-sanitize.js"></script>
 		<script src="../lib/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
-		<script src="../lib/js/jquery.min.js"></script>
-		<script src="../lib/js/bootstrap-rating-input.js"></script>
-		<script src="../lib/js/bootstrap-rating-input1.js"></script>
-		<script src="../lib/js/bootstrap-datetimepicker.fr.js"></script>
-		<script src="../lib/js/bootstrap-datetimepicker.js"></script>
 		<link href="../lib/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="../lib/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<link href="../lib/css/style.css" rel="stylesheet" type="text/css">
 		<link href="../lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 	</head>
     
-	<body ng-controller="info_ctrl">
-		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-			<div class="navbar-header">
-				<a class="navbar-brand">XxxX</a>
-			</div>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a class="nav-link" ng-click="to_login()">Log In</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" ng-click="to_signup()">Sign up</a>
-				</li>
-			</ul>
-		</nav>
+
+
+	<body ng-controller="siteCtrl">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="navbar-header">
+                <a class="navbar-brand">XxxX</a>
+            </div>
+            <ul  class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="to_login()">{{navbutton1}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="to_signup()">{{navbutton2}}</a>
+                </li>
+            </ul>
+        </nav>
+
 
 		<div class="container-fluid d-flex justify-content-between">
 			<div class="container-fluid">
-				<div style="width:90%;height:100px;" class="container text-center m-4" ng-click="show_picture(4)">
+				<div style="width:90%;height:100px;" class="container text-center ml-4 mt-4" ng-click="show_picture(4)">
 					<h4>Entire apartment hosted by Staaron</h4>
-					<p>2 guests · 1 bedroom · 1 bed · 1 bath</p>
+					<p>{{data_info.type}}</p>
 				</div>
-				<div style="width:90%;" class="container scrollbar-deep text-scrollbar p-4 m-4 bc-grey">
-					<p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
-						qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan
-						mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
-						qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson
-						aesthetic.
-						Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-					<p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
-						qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan
-						mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
-						qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson
-						aesthetic.
-						Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+				<div class="d-flex flex-row ml-4 mb-4 align-items-center">
+					<div region="west" class="west" style="width: 80px;"><img
+							style="width:60px;height:60px" src="../src/5.jpg"
+							class="rounded-circle  float-left "></div>
+					<h5>    {{data_info.landlordId}}</h5>
 				</div>
-
+				<div style="width:90%;" class="container scrollbar-deep text-scrollbar p-4 ml-4 bc-grey">
+					<p>{{data_info.description}}</p>
+				</div>
 				<div style="width:90%;" class="p-3 m-4">
 					<h6>Address</h6>
-					<p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
-						qui. Tumblr farm-to-table bicycle rights whatever. </p>
+					<p>{{data_info.address}}</p>
+				</div>
+
+
+
+				<div ng-controller="RatingDemoCtrl" class="container m-4 p-3">
+					<h4>Rate for this apartment</h4>
+					<span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+					<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+				
 				</div>
 
 				<div style="height:500px;width:90%;" class="container m-4 p-2">
@@ -134,33 +134,12 @@
 					</div>
 				</div>
 
-				<div style="width:90%;" id="ratesystem" class="container m-3 p-2 border-top">
-					<div class="d-flex justify-content-between p-2">
-						<Label style="font-size: x-large;">Star</Label>
-						<input id="rate_star1" type="number" class="rating1" data-caption="" value="4" data-min="1" data-max="5"/>
-					</div>
-					<form id="comment1">
-						<div class="input-group-lg input-group-prepend ">
-							<div class="input-group-text">
-								<input type="checkbox">
-							</div>
-							<input type="text" class="form-control" placeholder="Please enter your comment here">
-						</div>
-					</form>
-					<button id="rate1" type="button" class="btn btn-primary">
-						Rate for this apartment
-					</button>
-					<button id="rate2" type="button" class="btn btn-primary">
-						Submit
-					</button>
-					<h4 style="color:#f66;margin:37px" id="thanks">
-						Thanks for replying!
-					</h4>
-				</div>
+
+				
 			</div>
 
 			<div class="container-fluid">
-				<div class="text-center">
+				<div ng-controller="info_ctrl" class="text-center">
 					<a href="javascript:void(0)">
 						<img style="max-width:90%;max-height: 500px;" alt="图片一" src="../src/4.jpg" class="m-4 img-rounded" ng-click="show_picture(1)">
 					</a>
@@ -194,7 +173,7 @@
 					</div>-->
 					<div class="card-body ">
 						<p class="float-left m-2">Avaliable start</p>
-						<p class="float-right m-2">Jan. 2021</p>
+						<p class="float-right m-2">{{data_info.startMonth}}</p>
 					</div>
 					<div class="card-body ">
 						<p class="float-left m-2">Lease Term</p>
@@ -202,7 +181,7 @@
 					</div>
 					<div class="card-body ">
 						<p class="float-left m-2">Type</p>
-						<p class="float-right m-2">Studio</p>
+						<p class="float-right m-2">{{data_info.type}}</p>
 					</div>
 					<div class="card-body ">
 						<p class="float-left m-2">Vancancy</p>
@@ -210,11 +189,11 @@
 					</div>
 					<div class="card-body ">
 						<p class="float-left m-2">Rent</p>
-						<p class="float-right m-2">900 CAD$/month</p>
+						<p class="float-right m-2">{{data_info.price}} CAD$/month</p>
 					</div>
 
 					<div class="card-footer">
-						<div class="align-content-center ">
+						<div ng-controller="info_ctrl" class="align-content-center ">
 							<button style="width:80%;" type="button" ng-click="show_picture(5)" class="btn btn-primary">
 								Reserve
 							</button>
@@ -225,7 +204,9 @@
 		</div>
 
 		<script src="../ctrl/common/httpservice.js"></script>
-		<script src="../ctrl/picture.js"></script>
+		<script src="../ctrl/common/modalservice.js"></script>
+		<script src="../ctrl/common/navservice.js"></script>
+		<script src="../ctrl/apt-info.js"></script>
 
 		<script type="text/ng-template" id="reserve.html">
 			<div  style="width:800px;height:500px" class="card text-center align-self-center " >
@@ -242,7 +223,7 @@
 					<div class="card-body text-center" style="font-size:x-large;font-weight:600">$200/Day</div>
 					<button style="width:660px;" type="button" ng-click="show_picture(5)" class="tip2"  >
 						Reserve now
-					</button>
+					</button> 
 				</div>
 			</div>
 		</script>
@@ -253,8 +234,20 @@
 			</div>
 		</script>
 
-		<script type="text/ng-template" id="signup1.html">
-			<img  src="../src/4.jpg" class="align-self-center">
+		<script type="text/ng-template" id="picture.html">
+			<div class='card align-self-center' >
+			<div ng-controller="CarouselDemoCtrl" >
+				<div uib-carousel active="active" >
+				  <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+					<div class="carousel-caption align-self-center">
+					  <h4>Slide {{slide.id}}</h4>
+					  <p>{{slide.text}}</p>
+					</div>
+					<img style="width:1200px;height: 700px" ng-src="{{slide.image}}" >
+				  </div>
+				</div>
+			  </div>
+			</div>
 		</script>
 
 		<script type="text/ng-template" id="signup2.html">
@@ -269,48 +262,7 @@
 			<img style="width:1000px;" src="../src/6.jpg" class="align-self-center">
 		</script>
 
-		<script type="text/javascript">
-			$(document).ready(function () {
-				$("#table_rate").hide();
-				$("#rate2").hide();
-				$("#comment1").hide();
-				$("#table_show").show();
-				$("#thanks").hide();
-				$("#like").hide();
-				$("#unlike").click(function () {
-					$("#unlike").hide();
-					$("#like").show();
-				});
-				$("#rate1").click(function () {
-					$("#table_show").hide();
-					$("#comment1").show();
-					$("#rate2").show();
-					$("#rate1").hide();
-					$("#table_rate").show();
 
-				});
-				$("#rate2").click(function () {
-					$("#table_show").show();
-					$("#table_rate").hide();
-					$("#rate2").hide();
-					$("#comment1").hide();
-					$("#thanks").show();
-				});
-				$('#table_rate').on('change', function () {
-					//alert("Changed: input" + $(this).val())
-				});
-			});
-			$('.form_date').datetimepicker({
-				language: 'fr',
-				weekStart: 1,
-				todayBtn: 1,
-				autoclose: 1,
-				todayHighlight: 1,
-				startView: 2,
-				minView: 2,
-				forceParse: 0
-			});
-		</script>
 
 	</body>
 
