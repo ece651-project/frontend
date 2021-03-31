@@ -1,13 +1,21 @@
 (function () {
-    angular.module('apt-list', ['ui.bootstrap', 'ngAnimate', 'ngSanitize', 'navservice'])
-        .controller('list_ctrl', ListCtrl)
+    angular.module('apt-list', ['ui.bootstrap', 'ngAnimate', 'ngSanitize', 'httpservice', 'navservice'])
+        .controller('ListCtrl', ListCtrl)
         .controller('DatepickerCtrl', DatepickerCtrl);
     
-    function ListCtrl($scope, $window, NavHeaderService){
+    function ListCtrl($scope, $http, NavHeaderService){
         NavHeaderService.navheader_init(false);
+        
+        $http({
+            method: 'GET',
+            url:'../page/data.json'
 
-        $scope.list = [1,2,3,4,5]
-
+            // url: 'http://ec2-18-140-13-225.ap-southeast-1.compute.amazonaws.com:8080/apt/get_all
+        }).then(function successCallback(response) {
+            $scope.data_info = response.data.info_arr;
+        }, function errorCallback(response) {
+            alert("Request Failed!"); 
+        });
     }
 
     function DatepickerCtrl($scope){
