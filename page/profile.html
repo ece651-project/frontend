@@ -41,9 +41,9 @@
                     <uib-tab heading="For Rent">
                         <div class="mt-3 border-bottom pre-scrollable">
                             <table class="table" style="table-layout: fixed;">
-                                <tr>
+                                <tr ng-repeat="x in [1]">
                                     <td>
-                                        <img class="table-image" src="../src/2.jpg" alt="">
+                                        <img class="table-image" src="../src/3.jpg">
                                     </td>
                                     <td>
                                         <ul class="fa-ul text-center mb-0">
@@ -57,7 +57,7 @@
                                             </li>
                                             <li>
                                                 <i class="fa-li fa fa-calendar"></i>
-                                                <p class="mb-1">date</p>
+                                                <p class="mb-1">date({{x}})</p>
                                             </li>
                                             <li>
                                                 <i class="fa-li fa fa-usd"></i>
@@ -65,7 +65,7 @@
                                             </li>
                                         </ul>
                                     </td>
-                                    <td class="text-center">
+                                    <td class="text-center pt-3">
                                         <button class="btn btn-primary">View</button><br>
                                         <button class="btn btn-primary mt-3">Update</button>
                                     </td>
@@ -76,65 +76,82 @@
                             <button class="btn btn-lg btn-primary">Add New</button>
                         </div>
                         <div class="container mt-3" ng-show="true">
-                            <p style="margin-bottom: 8rem;">Images</p>
+                            <div class="mb-3">
+                                <label>Images</label>
+                                <div class="d-flex justify-content-start">
+                                    <img class="preview-image" src="../src/1.jpg">
+                                    <img class="preview-image" src="../src/3.jpg">
+                                    <a href="" type="file" class="fa fa-plus-square-o fa-5x mt-auto mb-auto" image-upload></a>
+                                </div>
+                            </div>
                             <div class="d-flex justify-content-start">
-                                <div class="w-50 pr-5">
+                                <form class="w-50 pr-5" name="rent_addr">
                                     <label for="address">Address</label>
-                                    <span class="text-danger pl-5" ng-show="addr_err()">{{addr_errmsg}}</span>
+                                    <span class="text-danger pl-5" ng-show="addr_err(rent_addr)">{{addr_errmsg(rent_addr)}}</span>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Address Line 1" name="addr1" required>
+                                        <input class="form-control" type="text" placeholder="Address Line 1" name="addr1" ng-model="apt.addr1" required>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Address Line 2" name="addr2">
+                                        <input class="form-control" type="text" placeholder="Address Line 2" name="addr2" ng-model="apt.addr2">
                                     </div>
                                     <div class="form-group d-flex">
-                                        <input class="form-control" type="text" placeholder="City" name="city" required>
-                                        <select class="form-control" id="province" required>
-                                            <option disabled selected hidden>Province/Territory</option>
+                                        <input class="form-control" type="text" placeholder="City" name="city" ng-model="apt.city" required>
+                                        <select class="form-control" name="province" ng-model="apt.province" required>
+                                            <option disabled selected hidden value="">Province/Territory</option>
                                             <option>AB</option><option>BC</option><option>MB</option><option>NB</option>
                                             <option>NL</option><option>NT</option><option>NS</option><option>NU</option>
                                             <option>ON</option><option>PE</option><option>QC</option><option>SK</option><option>YT</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="Postal Code/ZIP" name="zip" required>
+                                        <input class="form-control" type="text" placeholder="Postal Code/ZIP" name="zip" ng-model="apt.zip" required>
                                     </div>
-                                </div>
-                                <div class="w-50 pr-5">
-                                    <div class="form-group form-inline">
+                                </form>
+                                <form class="w-50 pr-5" name="rent_info">
+                                    <div class="form-group form-inline mb-2">
                                         <label class="justify-content-start w-25">Type</label>
-                                        <select class="form-control w-75" id="type" required>
-                                            <option>Studio</option>
+                                        <select class="form-control w-75" name="type" ng-model="apt.type" required>
+                                            <option disabled selected hidden value="">Select Type</option>
+                                            <option>Studio</option><option>House</option>
                                         </select>
-                                        <span class="text-danger" ng-show="type_err()">{{type_errmsg}}</span>
                                     </div>
-                                    <div class="form-group form-inline">
-                                        <label class="justify-content-start w-25">Period</label>
-                                        <select class="form-control w-25" id="period_start" required>
-
+                                    <div class="form-group form-inline mb-2">
+                                        <label class="justify-content-start w-25">Start Date</label>
+                                        <select class="form-control w-75" name="date_start" ng-model="apt.date" required>
+                                            <option disabled selected hidden value="">Select Date</option>
+                                            <option>0</option><option>1</option>
                                         </select>
-                                        <label class="w-25">~</label>
-                                        <select class="form-control w-25" id="period_end">
-
-                                        </select>
-                                        <span class="text-danger" ng-show="period_err()">{{period_errmsg}}</span>
                                     </div>
-                                    <div class="form-group form-inline mt-2">
+                                    <div class="form-group form-inline mb-2">
+                                        <label class="justify-content-start w-25">Lease Term</label>
+                                        <div class="input-group w-75">
+                                            <input class="form-control" type="text" name="term" ng-pattern="/^[0-9]*$/" ng-model="apt.term" required>
+                                            <span class="input-group-append input-group-text">months</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-inline mb-2">
+                                        <label class="justify-content-start w-25">Available</label>
+                                        <div class="input-group w-75">
+                                            <input class="form-control" type="text" name="vacancy" ng-pattern="/^[0-9]*$/" ng-model="apt.vacancy" required>
+                                            <span class="input-group-append input-group-text">people</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-inline mb-2">
                                         <label class="justify-content-start w-25">Rent</label>
                                         <div class="input-group w-75">
-                                            <input class="form-control" type="text">
+                                            <input class="form-control" type="text" name="price" ng-pattern="/^[0-9]+\.?[0-9]*$/" ng-model="apt.price" required>
                                             <span class="input-group-append input-group-text">CAD</span>
                                         </div>
-                                        <span class="text-danger" ng-show="rent_err()">{{rent_errmsg}}</span>
                                     </div>
-                                </div>
+                                    <span class="text-danger" ng-show="info_err(rent_info)">{{info_errmsg(rent_info)}}</span>
+                                </form>
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea class="form-control" id="description" rows="3"></textarea>
+                                <textarea class="form-control" id="description" rows="3">{{apt.description}}</textarea>
                             </div>
                             <div class="d-flex justify-content-around">
-                                <button class="btn btn-lg btn-primary">Submit</button>
+                                <button class="btn btn-lg btn-primary" ng-disabled="rent_addr.$invalid || rent_info.$invalid">Submit</button>
                                 <button class="btn btn-lg btn-primary">Cancel</button>
                             </div>
                         </div>
@@ -145,15 +162,44 @@
                         </div>
                     </uib-tab>
                     <uib-tab heading="Edit Profile">
-                        <div class="mt-3">
-                            <p>dsa</p>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <div class="container">
+                                <p class="text-center">Change Avater</p>
+                                <div class="custom-file mt-3">
+                                    <input type="file" class="custom-file-input" file-select>
+                                    <label class="custom-file-label">{{avater_name}}</label>
+                                </div>
+                            </div>
+                            <form class="container form-group" name="edit_form">
+                                <div class="form-group form-inline input-group mb-0">
+                                    <span class="input-group-prepend input-group-text w-25">Nickname</span>
+                                    <input class="form-control" type="text" name="edit_name" placeholder="{{user.nickname}}" ng-focus="focus_name()" ng-model="change_user.nickname">
+                                </div>
+                                <span class="text-danger pl-2 mt-0" ng-show="edit_name_err()">{{edit_name_errmsg}}</span>
+                                <div class="form-group form-inline input-group mb-0">
+                                    <span class="input-group-prepend input-group-text w-25">Phone Number</span>
+                                    <input class="form-control" type="text" name="edit_phone" placeholder="{{user.phoneNum}}" ng-pattern="/^[0-9]*$/" ng-model="change_user.phoneNum">
+                                </div>
+                                <span class="text-danger pl-2" ng-show="edit_form.edit_phone.$invalid">{{edit_phone_errmsg}}</span>
+                                <div class="form-group form-inline input-group mb-0">
+                                    <span class="input-group-prepend input-group-text w-25">New Password</span>
+                                    <input class="form-control" type="{{pwdtype ? 'text':'password'}}" name="edit_pwd" ng-pattern="pwd_pattern" ng-model="change_user.password">
+                                    <span class="form-control-eye p-eye" ng-class="{'fa fa-eye': pwdtype, 'fa fa-eye-slash': !pwdtype}" ng-click="pwdtoggle()"></span>
+                                </div>
+                                <span class="text-danger pl-2" ng-show="edit_form.edit_pwd.$invalid">{{edit_pwd_errmsg}}</span>
+                            </form>
+                        </div>
+                        <div class="mt-3 d-flex justify-content-around">
+                            <button class="btn btn-lg btn-primary" ng-disabled="edit_form.$invalid" ng-click="edit_update()">Update</button>
+                            <button class="btn btn-lg btn-primary" ng-click="edit_cancel()">Cancel</button>
                         </div>
                     </uib-tab>
                 </uib-tabset>
             </div>
         </div>
-
+        <script src="../ctrl/common/httpservice.js"></script>
+        <script src="../ctrl/common/modalservice.js"></script>
+        <script src="../ctrl/common/navservice.js"></script>
         <script src="../ctrl/profile.js"></script>
-
     </body>
 </html>

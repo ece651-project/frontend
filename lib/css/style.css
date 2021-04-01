@@ -33,7 +33,7 @@
     padding-left: 17px;
 }
  
-.modal-body .form-group .ng-hide {
+.form-group .ng-hide {
     display: block!important;
     visibility: hidden;
 }
@@ -49,6 +49,10 @@
 .s-eye {
     top: 15.9rem;
     right: 2.6rem;
+}
+.p-eye {
+    top: 0.6rem;
+    right: 0.6rem;
 }
 
 .empty-star{
@@ -259,6 +263,10 @@ ul,li {
     max-width: 1500px;
 }
 
+.fa-map-maker{
+    padding-left: 2.8px;
+}
+
 .table-image{
     display: block;
     width: 100px;
@@ -266,7 +274,9 @@ ul,li {
     margin-left: auto;
     margin-right: auto;
 }
-
-.fa-map-maker{
-    padding-left: 2.8px;
+.preview-image{
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin-right: 1rem;
 }
