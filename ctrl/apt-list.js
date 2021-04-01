@@ -3,19 +3,24 @@
         .controller('ListCtrl', ListCtrl)
         .controller('DatepickerCtrl', DatepickerCtrl);
     
-    function ListCtrl($scope, $http, NavHeaderService){
+    function ListCtrl($scope, $http, $window, NavHeaderService){
         NavHeaderService.navheader_init(false);
-        
+
         $http({
             method: 'GET',
-            url:'../page/data.json'
+            url: 'data.json'
 
-            // url: 'http://ec2-18-140-13-225.ap-southeast-1.compute.amazonaws.com:8080/apt/get_all
+            // url: 'http://ec2-18-140-13-225.ap-southeast-1.compute.amazonaws.com:8080/apt/get_all'
         }).then(function successCallback(response) {
             $scope.data_info = response.data.info_arr;
         }, function errorCallback(response) {
             alert("Request Failed!"); 
         });
+
+        $scope.to_aptinfo = function(aid){
+            localStorage.setItem("aid", aid);
+            $window.location.href = "/page/apt-info.html";
+        }
     }
 
     function DatepickerCtrl($scope){
