@@ -6,13 +6,75 @@
 
     function ProfileController($scope, $window, NavHeaderService, UserHttpService, AptHttpService){
         NavHeaderService.navheader_init(true);
-        $scope.user = {
-            email: '123@gmail.com',
-            nickname: '321',
-            phoneNum: '213121312'
-        };
-        // For Rent
+        let uid = localStorage.getItem("uid")
+        UserHttpService.getUser(uid).then(function(res){
+            $scope.user = res.data;
+        },function(res){
+            alert("Error: "+res.status);
+        });
+        UserHttpService.getUserApt(uid).then(function(res){
+            $scope.rent_aptlist = res.data;
+        },function(res){
+            alert("Error: "+res.status);
+        });
+        UserHttpService.getFavor(uid).then(function(res){
+            $scope.favor_aptlist = res.data;
+        },function(res){
+            alert("Error: "+res.status);
+        });
+        //$scope.rent_aptlist = [1,2,3];
+        //$scope.favor_aptlist = [1,2,3];
 
+        // For Rent
+        var isnew= true;
+        $scope.apt = {};
+        $scope.images = [];
+        $scope.apt_show_form = false;
+        $scope.apt_add_new = function(){$scope.apt_show_form = true; isnew = true;}
+        DatepickerPopup($scope);
+        $scope.apt_view = function(aid){
+            localStorage.setItem('aid', aid);
+            $window.location.href = "/page/apt-info.html";
+        }
+        $scope.show_address = function(address){
+            var addr = address.split('|');
+            return addr.filter(x => x).join();
+        }
+        $scope.apt_update = function(aid){
+            isnew = false;
+            $scope.apt_show_form = true;
+            AptHttpService.getApt(aid).then(function(res){
+                $scope.apt = res.data;
+                for(i=0; i<$scope.apt.images.length; i++){$scope.images.push({src: $scope.apt.images[i]});}
+                var addr_split = $scope.apt.address.split('|');
+                $scope.apt.addr.line1 = addr_split[0];$scope.apt.addr.line2 = addr_split[1];
+                $scope.apt.addr.city = addr_split[2];$scope.apt.addr.province = addr_split[3];$scope.apt.addr.zip = addr_split[4];
+                var date_split = $scope.apt.startDate.split('/');
+                $scope.apt.date = new Date(date_split[2], date_split[1], date_split[0]);
+            }, function(res){
+                alert("Error: "+res.status);
+            });
+        }
+        $scope.apt_delete = function(aid){
+            AptHttpService.deleteApt(uid, aid).then(function(res){
+                if(res.data.success){location.reload();}
+                else{alert(res.data.msg);}
+            }, function(res){
+                alert("Error: "+res.status);
+            });
+        }
+
+        $scope.$on('imageSelected', function(event, args){
+            var image = args;
+            $scope.images.push(image);
+            var reader = new FileReader();
+            reader.addEventListener('load', function(){
+                $scope.$apply(function(){
+                    image.src = reader.result;
+                })
+            }, false);
+            if(image.file){reader.readAsDataURL(image.file);}
+        });
         $scope.addr_err = function(rent_addr){
             return (rent_addr.addr1.$dirty && rent_addr.addr1.$invalid) || (rent_addr.city.$dirty && rent_addr.city.$invalid) ||
                 (rent_addr.province.$touched && rent_addr.province.$invalid) || (rent_addr.zip.$dirty && rent_addr.zip.$invalid);
@@ -24,11 +86,12 @@
             else if(rent_addr.zip.$error.required){return "Postal code cannot be empty";}
         }
         $scope.info_err = function(rent_info){
-            return (rent_info.type.$touched && rent_info.type.$invalid) ||
+            return (rent_info.type.$touched && rent_info.type.$invalid) || (rent_info.date.$touched && rent_info.date.$invalid) ||
                 (rent_info.term.$dirty && rent_info.term.$invalid) || (rent_info.vacancy.$dirty && rent_info.vacancy.$invalid) || (rent_info.price.$dirty && rent_info.price.$invalid);
         }
         $scope.info_errmsg = function(rent_info){
             if(rent_info.type.$error.required){return "Type cannot be empty";}
+            else if(rent_info.date.$error.required){return "Start Date cannot be empty";}
             else if(rent_info.term.$error.required){return "Lease Term cannot be empty";}
             else if(rent_info.term.$invalid){return "Lease Term can only be numbers";}
             else if(rent_info.vacancy.$error.required){return "Availability cannot be empty";}
@@ -36,8 +99,42 @@
             else if(rent_info.price.$error.required){return "Rent cannot be empty";}
             else if(rent_info.price.$invalid){return "Rent can only be decimals";}
         }
-        //Favourite
 
+        $scope.apt_submit = function(){
+            var images_src = [];
+            for(i=0; i<$scope.images.length; i++){images_src.push($scope.images[i].src);}
+            $scope.apt.images = images_src;
+            $scope.apt.address = $scope.apt.addr.line1+'|'+$scope.apt.addr.line2+'|'+$scope.apt.addr.city+'|'+$scope.apt.addr.province+'|'+$scope.apt.addr.zip;
+            $scope.apt.startDate = $scope.apt.date.toLocaleDateString();
+            if(isnew){
+                AptHttpService.createApt($scope.apt).then(function(res){
+                    if(res.data.success){location.reload();}
+                    else{alert(res.data.msg);}
+                }, function(res){
+                    alert("Error: "+res.status);
+                });
+            } else{
+                AptHttpService.updateApt($scope.apt).then(function(res){
+                    if(res.data.success){location.reload();}
+                    else{alert(res.data.msg);}
+                }, function(res){
+                    alert("Error: "+res.status);
+                });
+            }
+            //console.log($scope.apt);
+        }
+        $scope.apt_cancel = function(){
+            $scope.apt_show_form = false;
+        }
+        //Favourite
+        $scope.delete_favor = function(aid){
+            UserHttpService.deleteFavor(uid,aid).then(function(res){
+                if(res.data.success){location.reload();}
+                else{alert(res.data.msg);}
+            }, function(res){
+                alert("Error: "+res.status);
+            });
+        }
         
         // Edit Profile
         var nickname_exist;
@@ -83,9 +180,11 @@
                     if(res.data.msg.includes('name')){nickname_exist = true;}
                 }
             }, function(res){
-                //
-                console.log(res.status);
-            })
+                alert("Error: "+res.status);
+            });
+        }
+        $scope.edit_cancel = function(){
+            location.reload();
         }
     }
 
@@ -117,4 +216,35 @@
         }
     }
 
+    function DatepickerPopup($scope){
+        $scope.date_format = 'dd-MMMM-yyyy';
+        $scope.today = function(){
+            $scope.apt.date = new Date();
+        }
+        $scope.today();
+        $scope.clear = function(){
+            $scope.apt.date = null;
+        }
+        $scope.date_options = {
+            customClass: getDayClass,
+            minDate: new Date(),
+            showWeeks: false
+        };
+        $scope.popup = {opened: false};
+        $scope.date_open = function(){
+            $scope.popup.opened = true;
+        }
+        $scope.events = [];
+        function getDayClass(data){
+            var date = data.date;
+            var mode = data.mode;
+            if(mode === 'day'){
+                var dayToCheck = new Date(date).setHours(0,0,0,0);
+                for(i=0; i<$scope.events.length; i++){
+                    var currentDay = new Date($scope.events[i].date).setHours(0,0,0,0);
+                    if (dayToCheck === currentDay) {return $scope.events[i].status;}
+                }
+            }
+        }
+    }
 })();
