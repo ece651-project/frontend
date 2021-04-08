@@ -3,13 +3,12 @@
         .controller('ListCtrl', ListCtrl)
         .controller('DatepickerCtrl', DatepickerCtrl);
     
-    function ListCtrl($scope, $http, $window, NavHeaderService){
+    function ListCtrl($scope, $http, $window, NavHeaderService, UserHttpService){
         NavHeaderService.navheader_init(false);
+        let uid = localStorage.getItem("uid");
 
         $http({
             method: 'GET',
-            // url: 'http://ec2-18-140-13-225.ap-southeast-1.compute.amazonaws.com:8080/apt/get_all'
-
             url: 'http://18.140.13.225:8080/apt/get_all'
         }).then(function successCallback(response) {
             $scope.data_info = response.data;
@@ -33,6 +32,13 @@
             else {
                 $scope.islActive = aid;
             }
+
+            var favor = {'uid': uid, 'aid': aid};
+            UserHttpService.addFavor(favor).then(function(res){
+                console.log(res);
+            }, function(res){
+                console.log(res);
+            });
         };
     }
 
