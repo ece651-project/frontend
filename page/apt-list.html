@@ -109,17 +109,17 @@
                         <dt class="info border-bottom" ng-repeat="x in data_info" style="margin-bottom: 3%; font-size: 15px; font-weight: 500;">
                             <div class="box d-flex justify-content-between">
                                 <div class="info-image text-center" style="width: 30%;">
-                                    <img src="{{x.images{0}}}" alt="house-image" style="max-height: 150px;">
+                                    <img src="{{x.images[0]}}" alt="house-image" style="max-height: 150px;">
                                 </div>
                                 <div class="info-details d-flex justify-content-between" style="width: 50%;">
                                     <div class="box1">
                                         <ul>
                                             <a class="list-link" ng-click="to_aptinfo(x.aid)">{{x.address}}</a>
-                                            <li>Available: {{x.startMonth}}</li>
+                                            <li>Available: {{x.startDate}}</li>
                                             <li>Lease Term: {{x.term + " month(s)"}}</li>
                                             <li>Vacancy: {{x.vacancy}}</li>
                                             <li>Building Type: {{x.type}}</li>
-                                            <li>Utilities Included | Parking Included</li>
+                                            <!-- <li>Utilities Included | Parking Included</li> -->
                                         </ul>
                                     </div>
                                 </div>
