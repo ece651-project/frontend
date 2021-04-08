@@ -47,11 +47,12 @@
             AptHttpService.getApt(aid).then(function(res){
                 $scope.apt = res.data;
                 for(i=0; i<$scope.apt.images.length; i++){$scope.images.push({src: $scope.apt.images[i]});}
+                $scope.apt.addr = {};
                 var addr_split = $scope.apt.address.split('|');
                 $scope.apt.addr.line1 = addr_split[0];$scope.apt.addr.line2 = addr_split[1];
                 $scope.apt.addr.city = addr_split[2];$scope.apt.addr.province = addr_split[3];$scope.apt.addr.zip = addr_split[4];
                 var date_split = $scope.apt.startDate.split('-');
-                $scope.apt.date = new Date(date_split[0], date_split[1], date_split[2]);
+                $scope.apt.date = new Date(date_split[0], date_split[1]-1, date_split[2]);
             }, function(res){
                 alert("Error: "+res.status);
             });
@@ -118,19 +119,20 @@
                     if(res.data.success){location.reload();}
                     else{alert(res.data.msg);}
                 }, function(res){
-                    console.log(res);
-                    //alert("Error: "+res.status);
+                    alert("Error: "+res.status);
                 });
             } else{
+                delete $scope.apt['uploadTime'];
                 AptHttpService.updateApt($scope.apt).then(function(res){
                     if(res.data.success){location.reload();}
-                    else{alert(res.data.msg);}
+                    else{
+                        alert(res.data.msg);
+                    }
                 }, function(res){
-                    console.log(res);
-                    //alert("Error: "+res.status);
+                    alert("Error: "+res.status);
                 });
             }
-            console.log($scope.apt);
+            //console.log($scope.apt);
         }
         $scope.apt_cancel = function(){
             $scope.apt_show_form = false;
@@ -180,7 +182,6 @@
             for (x in $scope.change_user){
                 if(!$scope.change_user[x]){delete $scope.change_user[x];}
             }
-            console.log($scope.change_user);
             UserHttpService.updateUser($scope.change_user).then(function(res){
                 if(res.data.success){
                     location.reload();
