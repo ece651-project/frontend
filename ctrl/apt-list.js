@@ -8,11 +8,11 @@
 
         $http({
             method: 'GET',
-            url: 'data.json'
-
             // url: 'http://ec2-18-140-13-225.ap-southeast-1.compute.amazonaws.com:8080/apt/get_all'
+
+            url: 'http://18.140.13.225:8080/apt/get_all'
         }).then(function successCallback(response) {
-            $scope.data_info = response.data.info_arr;
+            $scope.data_info = response.data;
         }, function errorCallback(response) {
             alert("Request Failed!"); 
         });
