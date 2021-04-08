@@ -38,6 +38,7 @@
         }
         $scope.show_address = function(address){
             var addr = address.split('|');
+            addr.pop();
             return addr.filter(x => x).join();
         }
         $scope.apt_update = function(aid){
@@ -49,8 +50,8 @@
                 var addr_split = $scope.apt.address.split('|');
                 $scope.apt.addr.line1 = addr_split[0];$scope.apt.addr.line2 = addr_split[1];
                 $scope.apt.addr.city = addr_split[2];$scope.apt.addr.province = addr_split[3];$scope.apt.addr.zip = addr_split[4];
-                var date_split = $scope.apt.startDate.split('/');
-                $scope.apt.date = new Date(date_split[2], date_split[1], date_split[0]);
+                var date_split = $scope.apt.startDate.split('-');
+                $scope.apt.date = new Date(date_split[0], date_split[1], date_split[2]);
             }, function(res){
                 alert("Error: "+res.status);
             });
@@ -101,27 +102,35 @@
         }
 
         $scope.apt_submit = function(){
+            $scope.apt.landlordId = uid;
             var images_src = [];
             for(i=0; i<$scope.images.length; i++){images_src.push($scope.images[i].src);}
             $scope.apt.images = images_src;
             $scope.apt.address = $scope.apt.addr.line1+'|'+$scope.apt.addr.line2+'|'+$scope.apt.addr.city+'|'+$scope.apt.addr.province+'|'+$scope.apt.addr.zip;
-            $scope.apt.startDate = $scope.apt.date.toLocaleDateString();
+            $scope.apt.startDate = $scope.apt.date.toLocaleDateString('fr-CA');
+            delete $scope.apt['addr'];
+            delete $scope.apt['date'];
+            $scope.apt.term = parseInt($scope.apt.term);
+            $scope.apt.vacancy = parseInt($scope.apt.vacancy);
+            $scope.apt.price = parseInt($scope.apt.price);
             if(isnew){
                 AptHttpService.createApt($scope.apt).then(function(res){
                     if(res.data.success){location.reload();}
                     else{alert(res.data.msg);}
                 }, function(res){
-                    alert("Error: "+res.status);
+                    console.log(res);
+                    //alert("Error: "+res.status);
                 });
             } else{
                 AptHttpService.updateApt($scope.apt).then(function(res){
                     if(res.data.success){location.reload();}
                     else{alert(res.data.msg);}
                 }, function(res){
-                    alert("Error: "+res.status);
+                    console.log(res);
+                    //alert("Error: "+res.status);
                 });
             }
-            //console.log($scope.apt);
+            console.log($scope.apt);
         }
         $scope.apt_cancel = function(){
             $scope.apt_show_form = false;

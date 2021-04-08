@@ -61,7 +61,7 @@
                                             </li>
                                             <li>
                                                 <i class="fa-li fa fa-usd"></i>
-                                                <p class="mb-1">{{x.rent}}</p>
+                                                <p class="mb-1">{{x.price}}</p>
                                             </li>
                                         </ul>
                                     </td>
@@ -112,7 +112,7 @@
                                         <label class="justify-content-start w-25">Type</label>
                                         <select class="form-control w-75" name="type" ng-model="apt.type" required>
                                             <option disabled selected hidden value="">Select Type</option>
-                                            <option>Studio</option><option>House</option>
+                                            <option>Studio</option><option>House</option><option>Apartment</option>
                                         </select>
                                     </div>
                                     <div class="form-group form-inline mb-2">
@@ -153,7 +153,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea class="form-control" id="description" rows="3">{{apt.description}}</textarea>
+                                <textarea class="form-control" id="description" rows="3" ng-model="apt.description" required></textarea>
                             </div>
                             <div class="d-flex justify-content-around">
                                 <button class="btn btn-lg btn-primary" ng-disabled="rent_addr.$invalid || rent_info.$invalid" ng-click="apt_submit()">Submit</button>
@@ -178,7 +178,7 @@
                                         </ul>
                                     </td>
                                     <td style="width: 28%; text-align: center; line-height: 146px;">
-                                        <p>${{x.rent}}</p>
+                                        <p>${{x.price}}</p>
                                     </td>
                                     <td style="width: 5%;">
                                         <i class="like fa fa-star cs" ng-click="delete_favor(x.aid)"></i>
