@@ -108,14 +108,14 @@
                         <dt class="info border-bottom" ng-repeat="x in data_info" style="margin-bottom: 3%; font-size: 15px; font-weight: 500;">
                             <div class="box d-flex justify-content-between">
                                 <div class="info-image text-center" style="width: 30%;">
-                                    <img src="../src/house.jpg" alt="house-image" style="max-height: 150px;">
+                                    <img src="{{x.images}}" alt="house-image" style="max-height: 150px;">
                                 </div>
                                 <div class="info-details d-flex justify-content-between" style="width: 50%;">
                                     <div class="box1">
                                         <ul>
                                             <a class="list-link" ng-click="to_aptinfo(x.aid)">{{x.address}}</a>
                                             <li>Available: {{x.startMonth}}</li>
-                                            <li>Lease Term: {{x.term + "month(s)"}}</li>
+                                            <li>Lease Term: {{x.term + " month(s)"}}</li>
                                             <li>Vacancy: {{x.vacancy}}</li>
                                             <li>Building Type: {{x.type}}</li>
                                             <li>Utilities Included | Parking Included</li>
@@ -123,10 +123,10 @@
                                     </div>
                                 </div>
                                 <div class="info-price" style="width: 10%; text-align: center; line-height: 146px;">
-                                    <p>{{x.price}}</p>
+                                    <p>{{"$" + x.price}}</p>
                                 </div>
                                 <div class="info-like" style="width: 5%;">
-                                    <i class="like fa fa-star"></i>
+                                    <i class="like fa fa-star" ng-click="addFavor(x.aid)" ng-class="{'acti':(islActive == x.aid)}"></i>
                                 </div>
                             </div>
                         </dt>
@@ -177,10 +177,10 @@
         </script>
 
         <!-- script for like -->
-        <script>
+        <!-- <script>
             $(".like").click(function(){
                 $(this).toggleClass('cs');                
             })
-        </script>
+        </script> -->
     </body>
 </html>

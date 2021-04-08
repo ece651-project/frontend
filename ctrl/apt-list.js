@@ -17,10 +17,23 @@
             alert("Request Failed!"); 
         });
 
-        $scope.to_aptinfo = function(aid){
+        $scope.to_aptinfo = function(aid) {
             localStorage.setItem("aid", aid);
             $window.location.href = "/page/apt-info.html";
-        }
+        };
+
+        $scope.addFavor = function(aid) {
+            localStorage.setItem("aid", aid);
+            if ($scope.islActive === "") {
+                $scope.islActive = aid;
+            }
+            else if ($scope.islActive === aid){
+                $scope.islActive = "";
+            }  
+            else {
+                $scope.islActive = aid;
+            }
+        };
     }
 
     function DatepickerCtrl($scope){
