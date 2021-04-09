@@ -87,12 +87,17 @@
                     </div>
                     <div class="selediv mt-2 ml-0">
                         <div class="selemenu">Price</div>
-                        <div class="small-list">
-                            <span><400</span>
-                            <span>400~600</span>
-                            <span>600~800</span>
-                            <span>800~1000</span>
-                            <span>>1000</span>
+                        <div class="price-list justify-content-between">
+                            <select ng-model="priceSelect" style="width: 80%;">
+                                <option><400</option>
+                                <option>400~600</option>
+                                <option>600~800</option>
+                                <option>800~1000</option>
+                                <option>>1000</option>
+                            </select>
+
+                            <hr />
+                            <button type="button" class="btn btn-sm btn-info">Roll up</button>
                         </div>
                     </div>
                     <div class="selediv mt-2 ml-0">
@@ -106,7 +111,7 @@
                 </div>
                 <div class="container-fluid mt-5 ml-0 scrollbar-deep list-scrollbar border bc-grey">
                     <dl class="info-region mt-3">
-                        <dt class="info border-bottom" ng-repeat="x in data_info" style="margin-bottom: 3%; font-size: 15px; font-weight: 500;">
+                        <dt class="info border-bottom" ng-repeat="x in data_info|filter:pricefilter" style="margin-bottom: 3%; font-size: 15px; font-weight: 500;">
                             <div class="box d-flex justify-content-between">
                                 <div class="info-image text-center" style="width: 30%;">
                                     <img src="{{x.images[0]}}" alt="house-image" style="max-height: 150px;">
@@ -148,28 +153,34 @@
                 $(this).parents().siblings().find(".small-list,.big-list").slideUp();
             })
             $(".small-list span").click(function(){
-                var text=$(this).text();
+                var text = $(this).text();
                 $(this).parent().prev().html(text);
                 $(this).parent().prev().css("color","#666")
+                $(this).parent().slideUp();
+            })
+            $(".price-list button").click(function(){
+                // var text = $(this).text();
+                // $(this).parent().prev().html(text);
+                // $(this).parent().prev().css("color","#666")
                 $(this).parent().slideUp();
             })
             $(".city-list li").click(function(){
                 $(".city-list li").removeClass("active")
                 $(this).addClass("active")
-                var text1=$(this).text();
+                var text1 = $(this).text();
                 $(".sqinput").html(text1)
                 $(".big-list").slideUp();
             })
             $(".region-list li").click(function(){
                 $(".region-list li").removeClass("active")
                 $(this).addClass("active")
-                var text2=$(this).text();
+                var text2 = $(this).text();
                 $(".csinput").html("-"+text2)
                 $(".big-list").slideUp();
             })
             $(function(){
                 $(document).not($(".selectbox")).click(function(){
-                    $(".small-list,.big-list").slideUp();
+                    $(".small-list,.big-list,.time-list,.price-list").slideUp();
                 })
                 $(".selectbox").click(function(event){
                     event.stopPropagation();

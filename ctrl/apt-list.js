@@ -26,7 +26,7 @@
             if ($scope.islActive === "") {
                 $scope.islActive = aid;
             }
-            else if ($scope.islActive === aid){
+            else if ($scope.islActive === aid) {
                 $scope.islActive = "";
             }  
             else {
@@ -39,6 +39,46 @@
             }, function(res){
                 console.log(res);
             });
+        };
+
+        $scope.priceSelect = "Price";
+        $scope.pricefilter = function(x) {
+            if($scope.priceSelect != "Price") {
+                if($scope.priceSelect == '<400') {
+                    var arr = $scope.priceSelect.split("<");
+                    var max = arr[1];
+                    if(x.price > max) {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                }
+                else if($scope.priceSelect == '>1000') {
+                    var arr = $scope.priceSelect.split(">");
+                    var min = arr[1];
+                    if(x.price < min) {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                }
+                else {
+                    var arr = $scope.priceSelect.split("~");
+                    var min = arr[0];
+                    var max = arr[1];
+                    if(x.price < min || x.price > max) {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                }
+            }
+            else {
+                return true;
+            }
         };
     }
 
