@@ -6,216 +6,110 @@
 		<script src="../lib/js/angular.js"></script>
 		<script src="../lib/js/angular-animate.js"></script>
 		<script src="../lib/js/angular-sanitize.js"></script>
-		<script src="../lib/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
 		<script src="../lib/js/jquery.min.js"></script>
-		<script src="../lib/js/bootstrap-rating-input.js"></script>
-		<script src="../lib/js/bootstrap-rating-input1.js"></script>
-		<script src="../lib/js/bootstrap-datetimepicker.fr.js"></script>
-		<script src="../lib/js/bootstrap-datetimepicker.js"></script>
+		<script src="../lib/js/ui-bootstrap-tpls-3.0.6.min.js"></script>
 		<link href="../lib/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="../lib/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<link href="../lib/css/style.css" rel="stylesheet" type="text/css">
 		<link href="../lib/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 	</head>
     
-	<body ng-controller="info_ctrl">
-		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-			<div class="navbar-header">
-				<a class="navbar-brand">XxxX</a>
-			</div>
-			<ul class="navbar-nav ml-auto">
-				<li class="nav-item">
-					<a class="nav-link" ng-click="to_login()">Log In</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" ng-click="to_signup()">Sign up</a>
-				</li>
-			</ul>
-		</nav>
+
+
+	<body ng-controller="siteCtrl">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="navbar-header">
+                <a class="navbar-brand">XxxX</a>
+            </div>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="to_login()">{{navbutton1}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-click="to_signup()">{{navbutton2}}</a>
+                </li>
+            </ul>
+        </nav>
+
+
+
 
 		<div class="container-fluid d-flex justify-content-between">
 			<div class="container-fluid">
-				<div style="width:90%;height:100px;" class="container text-center m-4" ng-click="show_picture(4)">
-					<h4>Entire apartment hosted by Staaron</h4>
-					<p>2 guests · 1 bedroom · 1 bed · 1 bath</p>
+				<div style="width:90%;height:100px;" class="container text-center ml-4 mt-4" ng-click="show_picture(4)">
+					<h4>{{apt_info.address}}</h4>
+					<p>{{apt_info.type}}</p>
 				</div>
-				<div style="width:90%;" class="container scrollbar-deep text-scrollbar p-4 m-4 bc-grey">
-					<p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
-						qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan
-						mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
-						qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson
-						aesthetic.
-						Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
-					<p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
-						qui. Tumblr farm-to-table bicycle rights whatever. Anim keffiyeh carles cardigan. Velit seitan
-						mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg hoodie minim
-						qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes anderson
-						aesthetic.
-						Nihil tattooed accusamus, cred irony biodiesel keffiyeh artisan ullamco consequat.</p>
+				<div class="d-flex flex-row ml-4 mb-4 align-items-center">
+					<div region="west" class="west" style="width: 80px;"><img
+							style="width:60px;height:60px" src="{{apt_info.images[0]}}"
+							class="rounded-circle  float-left "></div>
+					<h5>    {{user_info.nickname}}</h5>
 				</div>
-
+				<div style="width:90%;" class="container scrollbar-deep text-scrollbar p-4 ml-4 bc-grey">
+					<p>{{apt_info.description}}</p>
+				</div>
 				<div style="width:90%;" class="p-3 m-4">
 					<h6>Address</h6>
-					<p>Ad leggings keytar, brunch id art party dolor labore. Pitchfork yr enim lo-fi before they sold out
-						qui. Tumblr farm-to-table bicycle rights whatever. </p>
+					<p>{{apt_info.address}}</p>
 				</div>
+				
 
-				<div style="height:500px;width:90%;" class="container m-4 p-2">
-					<h4 class="mt-2 ml-3">Comment</h4>
-					<div class="m-2">
-						<button type="button" class="tip0">
-							Clean
-						</button>
-						<button type="button" class="tip0">
-							Safe
-						</button>
-						<button type="button" class="tip0">
-							Pet
-						</button>
-						<button type="button" class="tip0">
-							Large Room
-						</button>
-						<button type="button" class="tip0">
-							Double Floor
-						</button>
+				<div style="height:500px;width:90%;" class="container m-2 p-2">
+					<div ng-controller="RatingDemoCtrl" class="container m-2 p-2">
+						<h4>Star</h4>
+						<span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+						<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
 					</div>
-					<div style="height:70%;" class="container scrollbar-deep text-scrollbar">
-						<div class="card">
-							<div class="card-body ">
-								<div class="d-flex flex-row ml-2 mb-2 align-items-center">
-									<div region="west" class="west" style="width: 100px;"><img
-											style="width:60px;height:60px" src="../src/4.jpg"
-											class="rounded-circle  float-left m-2"></div>
-									<h6>Sam</h6>
-								</div>
-								<div class="float-left pl-3">blr farm-to-table bicycle rights whatever. Anim keffiyeh carles
-									cardigan.
-									mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg
-									hoodie minim
-									qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes
-									anderson aesthetic.
-								</div>
-							</div>
-
-							<div class="card-body ">
-								<div class="d-flex flex-row ml-2 mb-2 align-items-center">
-									<div region="west" class="west" style="width: 100px;"><img
-											style="width:60px;height:60px" src="../src/4.jpg"
-											class="rounded-circle  float-left m-2"></div>
-									<h6>Jerry</h6>
-								</div>
-								<div class="float-left pl-3">iyeh carles cardigan.
-									mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg
-									hoodie minim
-									qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes
-									anderson aesthetic.
-								</div>
-							</div>
-
-							<div class="card-body ">
-								<div class="d-flex flex-row ml-2 mb-2 align-items-center">
-									<div region="west" class="west" style="width: 100px;"><img
-											style="width:60px;height:60px" src="../src/4.jpg"
-											class="rounded-circle  float-left m-2"></div>
-									<h6>Tom</h6>
-								</div>
-								<div class="float-left pl-3">
-									mcsweeney's photo booth 3 wolf moon irure. Cosby sweater lomo jean shorts, williamsburg
-									hoodie minim
-									qui you probably haven't heard of them et cardigan trust fund culpa biodiesel wes
-									anderson aesthetic.
-								</div>
-							</div>
-
-							<div class="card-body text-center">
-								<button class="btn btn-primary" style="width:90%" type="button">More</button>
-							</div>
-						</div>
+					<div ng-controller="InfoController" class="card-body text-center">
+						<button class="btn btn-primary" style="width:90%" type="button" ng-click="show(4)">Comment</button>
 					</div>
-				</div>
-
-				<div style="width:90%;" id="ratesystem" class="container m-3 p-2 border-top">
-					<div class="d-flex justify-content-between p-2">
-						<Label style="font-size: x-large;">Star</Label>
-						<input id="rate_star1" type="number" class="rating1" data-caption="" value="4" data-min="1" data-max="5"/>
-					</div>
-					<form id="comment1">
-						<div class="input-group-lg input-group-prepend ">
-							<div class="input-group-text">
-								<input type="checkbox">
-							</div>
-							<input type="text" class="form-control" placeholder="Please enter your comment here">
-						</div>
-					</form>
-					<button id="rate1" type="button" class="btn btn-primary">
-						Rate for this apartment
-					</button>
-					<button id="rate2" type="button" class="btn btn-primary">
-						Submit
-					</button>
-					<h4 style="color:#f66;margin:37px" id="thanks">
-						Thanks for replying!
-					</h4>
 				</div>
 			</div>
 
-			<div class="container-fluid">
-				<div class="text-center">
-					<a href="javascript:void(0)">
-						<img style="max-width:90%;max-height: 500px;" alt="图片一" src="../src/4.jpg" class="m-4 img-rounded" ng-click="show_picture(1)">
-					</a>
-				</div>
 
+
+			<div class="container-fluid">
+				<div class="text-center m-4">
+					<div ng-controller="CarouselDemoCtrl" >
+						<div uib-carousel active="active" >
+							<div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id"  >
+								<div class="carousel-caption align-self-center">
+								  <h4>Picture {{slide.id}}</h4>
+								</div>
+								<img style="width:100%;height: 400px" ng-src="{{apt_info.images[slide.id]}}"  ng-click="show_picture()" >
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="card text-center m-4 bc-grey">
 					<div class="card-header">
 						<h5>Details</h5>
 					</div>
-					<!--<div class="container-fluid d-flex justify-content-between pt-3">
-						<div style="width:50%;height:110px" class="container-fluid">
-							<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy"
-								data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-								Check-in:
-								<input class="form-control1" type="text" value="" readonly>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-							</div>
-							<input type="hidden" id="dtp_input2" value="" /><br />
-						</div>
-						<div style="width:50%;height:110px" class="container-fluid">
-							<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy"
-								data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-								Check-out:
-								<input class="form-control1" type="text" value="" readonly>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-								<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-							</div>
-							<input type="hidden" id="dtp_input2" value="" /><br />
-						</div>
-					</div>-->
 					<div class="card-body ">
 						<p class="float-left m-2">Avaliable start</p>
-						<p class="float-right m-2">Jan. 2021</p>
+						<p class="float-right m-2">{{apt_info.startDate}}</p>
 					</div>
 					<div class="card-body ">
 						<p class="float-left m-2">Lease Term</p>
-						<p class="float-right m-2">1 year</p>
+						<p class="float-right m-2">{{apt_info.term}}</p>
 					</div>
 					<div class="card-body ">
 						<p class="float-left m-2">Type</p>
-						<p class="float-right m-2">Studio</p>
+						<p class="float-right m-2">{{apt_info.type}}</p>
 					</div>
 					<div class="card-body ">
-						<p class="float-left m-2">Vancancy</p>
-						<p class="float-right m-2">1 person</p>
+						<p class="float-left m-2">Vacancy</p>
+						<p class="float-right m-2">{{apt_info.vacancy}}</p>
 					</div>
 					<div class="card-body ">
 						<p class="float-left m-2">Rent</p>
-						<p class="float-right m-2">900 CAD$/month</p>
+						<p class="float-right m-2">{{apt_info.price}} CAD$/month</p>
 					</div>
 
 					<div class="card-footer">
-						<div class="align-content-center ">
-							<button style="width:80%;" type="button" ng-click="show_picture(5)" class="btn btn-primary">
+						<div ng-controller="InfoController" class="align-content-center ">
+							<button style="width:80%;" type="button" ng-click="show(5)" class="btn btn-primary">
 								Reserve
 							</button>
 						</div>
@@ -225,91 +119,60 @@
 		</div>
 
 		<script src="../ctrl/common/httpservice.js"></script>
-		<script src="../ctrl/picture.js"></script>
+		<script src="../ctrl/common/modalservice.js"></script>
+		<script src="../ctrl/common/navservice.js"></script>
+		<script src="../ctrl/apt-info.js"></script>
 
 		<script type="text/ng-template" id="reserve.html">
-			<div  style="width:800px;height:500px" class="card text-center align-self-center " >
+			<div ng-controller="siteCtrl" style="width:580px;height:500px" class="card text-center align-self-center " >
 				<div class="card-header "><h6>Contact Information</h6></div>
 				<div class="card-footer align-content-center">
-					<div class="card-body " >
+					<div class="card-body m-3" >
 						<p class="float-left m-2">Name:</p>
-						<p class="float-right m-2"> Li</p>
+						<p class="float-right m-2"> {{user_info.nickname}}</p>
 					</div>
-					<div class="card-body " >
+					<div class="card-body m-3" >
 						<p class="float-left m-2">Phone number:</p>
-						<p class="float-right m-2"> 13888888888</p>
+						<p class="float-right m-2"> {{user_info.phoneNum}}</p>
+					</div>
+					<div class="card-body m-3" >
+						<p class="float-left m-2">Email address:</p>
+						<p class="float-right m-2"> {{user_info.email}}</p>
 					</div>
 					<div class="card-body text-center" style="font-size:x-large;font-weight:600">$200/Day</div>
-					<button style="width:660px;" type="button" ng-click="show_picture(5)" class="tip2"  >
+					<button style="width:60%;" type="button" ng-click="show(4)" class="btn-lg btn-primary"  >
 						Reserve now
-					</button>
+					</button> 
+					
 				</div>
 			</div>
 		</script>
 
+		<script type="text/ng-template" id="picture22.html">
+			<img style="width:1000px;" src="../src/5.jpg" class="align-self-center">
+		</script>
+		
 		<script type="text/ng-template" id="rate_submit.html">
-			<div  style="overflow:scorll" class="card text-center  " >
-				If the room is full on the selected date, you can click on your avatar to select other houses [Location] Poly Daduhui is located in Huangpu Avenue, near Pazhou Exhibition Center, adjacent to Pazhou Bridge, and adjacent to NetEase Guangzhou headquarters and Sanqi Mutual Entertainment. The nearby Keyun Road Metro Station of Line 5 provides direct access to Zhujiang New Town K11 and Tianhe CBD. Canton Tower is 6.1 km away. It is 8 stations away from Changlong Zoo Metro. [Room type] 1 bedroom and 1 living room duplex Loft with full floor-to-ceiling windows, the room is equipped with a 1.8-meter bed, with a nice view, and a safe, comfortable and warm space welcomes you [Supporting facilities] 1. There are various convenient facilities within walking distance, convenience stores, supermarkets, and various restaurants for easy dining. 2. There is a park nearby for you to take a walk and entertain. The housing facilities are complete, the toiletries are complete, you can move in with a bag, and there is a kitchen in the room to cook by yourself. There is a washing machine in the room to wash clothes. The large living room gives you a relaxing and entertaining space. You can enjoy Ge Youtan on the soft sofa. If it is too hot in the summer, you can enjoy ice watermelon and iced drinks when you turn on the refrigerator in the room.
+			<div ng-controller="siteCtrl" style="width:580px;height:250px" class="card text-center align-self-center " >
+				<div class="card-header "><h4>Your Comment</h4></div>
+				<div class="card-footer align-content-center">
+					<div ng-controller="RatingDemoCtrl" class="container m-2">
+						<h5>Rate for this apartment</h5>
+						<span uib-rating ng-model="rate" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating"></span>
+						<span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+					</div>
+					<button ng-show="Showcomment" style="width:60%;" type="button"   ng-click="Showcomment=false" class="btn btn-primary"  >
+						Submit
+					</button> 
+					<h5 ng-show="!Showcomment" style="color: rgb(254, 112, 112)">Thanks for rating!</h5>
+				</div>
 			</div>
 		</script>
 
-		<script type="text/ng-template" id="signup1.html">
-			<img  src="../src/4.jpg" class="align-self-center">
-		</script>
-
-		<script type="text/ng-template" id="signup2.html">
-			<img style="width:1000px;" src="../src/5.jpg" class="align-self-center">
-		</script>
-
-		<script type="text/ng-template" id="signup3.html">
-			<img style="width:1000px;" src="../src/7.jpg" class="align-self-center">
-		</script>
-
-		<script type="text/ng-template" id="signup4.html">
-			<img style="width:1000px;" src="../src/6.jpg" class="align-self-center">
-		</script>
-
-		<script type="text/javascript">
-			$(document).ready(function () {
-				$("#table_rate").hide();
-				$("#rate2").hide();
-				$("#comment1").hide();
-				$("#table_show").show();
-				$("#thanks").hide();
-				$("#like").hide();
-				$("#unlike").click(function () {
-					$("#unlike").hide();
-					$("#like").show();
-				});
-				$("#rate1").click(function () {
-					$("#table_show").hide();
-					$("#comment1").show();
-					$("#rate2").show();
-					$("#rate1").hide();
-					$("#table_rate").show();
-
-				});
-				$("#rate2").click(function () {
-					$("#table_show").show();
-					$("#table_rate").hide();
-					$("#rate2").hide();
-					$("#comment1").hide();
-					$("#thanks").show();
-				});
-				$('#table_rate').on('change', function () {
-					//alert("Changed: input" + $(this).val())
-				});
-			});
-			$('.form_date').datetimepicker({
-				language: 'fr',
-				weekStart: 1,
-				todayBtn: 1,
-				autoclose: 1,
-				todayHighlight: 1,
-				startView: 2,
-				minView: 2,
-				forceParse: 0
-			});
+		<script style="width:1000px" type="text/ng-template" id="picture.html">
+			<div  ng-controller="siteCtrl">
+				<img style="width:100%" ng-src="{{apt_info.images[0]}}" class="align-self-center" >
+			</div>
 		</script>
 
 	</body>
