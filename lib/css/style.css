@@ -33,7 +33,7 @@
     padding-left: 17px;
 }
  
-.modal-body .form-group .ng-hide {
+.form-group .ng-hide {
     display: block!important;
     visibility: hidden;
 }
@@ -49,6 +49,10 @@
 .s-eye {
     top: 15.9rem;
     right: 2.6rem;
+}
+.p-eye {
+    top: 0.6rem;
+    right: 0.6rem;
 }
 
 .empty-star{
@@ -113,6 +117,11 @@
     height: 75vh;
 }
 
+.profile-scrollbar {
+    overflow-y: auto;
+    height: 70vh;
+}
+
 .bc-grey{
     background-color:rgb(248, 248, 248);
 }
@@ -148,6 +157,7 @@
     display: block; 
     clear: both; 
     cursor: pointer;
+    font-size: 13px;
 }
 .small-list span:hover { 
     background:#eee;
@@ -161,7 +171,7 @@
     position: absolute; 
     left: 0; 
     top: 35px; 
-    width: 180px; 
+    width: 100%; 
     box-shadow: 0px 5px 5px #ccc;
 }
 
@@ -235,6 +245,19 @@ ul,li {
     color: black;
 }
 
+.price-list{ 
+    width: 200%; 
+    box-shadow: 0px 5px 5px #ccc; 
+    font-size: 14px; color:#666; 
+    padding: 20px 40px; 
+    position: absolute; 
+    top: 35px; 
+    left: 0; 
+    background:#fff; 
+    border-bottom: 1px solid #f6f6f6; 
+    display: none;
+}
+
 .mapimage {
     border-radius: 3px;
     box-shadow:rgba(0,0,0,0.15) 0 0 8px;
@@ -250,4 +273,41 @@ ul,li {
 }
 .cs {
     color:#ff4400;
+}
+.acti{
+    background-color: #fff;
+    box-shadow: none;
+    color: #ff4400;
+
+.profile-container{
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1500px;
+}
+
+.fa-map-maker{
+    padding-left: 2.8px;
+}
+
+.table-image{
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+.preview-image{
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin-right: 1rem;
+}
+.favor-image{
+    display: block;
+    max-height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
 }

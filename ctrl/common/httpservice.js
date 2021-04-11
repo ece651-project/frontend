@@ -29,6 +29,15 @@ const url = 'http://18.140.13.225:8080';
         service.updateUser = function(data){
             return $http.put(url+'/user/update_user', data);
         };
+        service.getFavor = function(uid){
+            return $http.get(url+'/user/get_fav/'+uid);
+        };
+        service.addFavor = function(data){
+            return $http.post(url+'/user/add_fav', data);
+        };
+        service.deleteFavor = function(uid, aid){
+            return $http.delete(url+'/user/delete_fav/'+uid+'/'+aid);
+        };
         return service;
     }
 
