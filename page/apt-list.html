@@ -16,7 +16,7 @@
     <body ng-controller="ListCtrl">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="navbar-header">
-                <a class="navbar-brand">XxxX</a>
+                <a class="navbar-brand" ng-click="to_index()">XxxX</a>
             </div>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -59,15 +59,6 @@
                                     <li>London</li>
                                 </ul>
                              </div>
-                            <!-- <div class="choose-reigon">
-                                <div class="label">Region</div>
-                                <ul class="region-list">
-                                    <li>Region</li>
-                                    <li>Region</li>
-                                    <li>Region</li>
-                                    <li>Region</li>
-                                </ul>
-                            </div> -->
                         </div>
                     </div>
                     <div class="selediv mt-2 ml-0">
@@ -77,11 +68,9 @@
                                 <div style="display:inline-block; min-height:290px;">
                                   <div uib-datepicker ng-model="dt" class="card" datepicker-options="options"></div>
                                 </div>
-                            
                                 <hr />
                                 <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
                                 <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
-                                <button type="button" class="btn btn-sm btn-secondary" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button>
                             </div>
                         </div>
                     </div>
@@ -119,12 +108,11 @@
                                 <div class="info-details d-flex justify-content-between" style="width: 50%;">
                                     <div class="box1">
                                         <ul>
-                                            <a class="list-link" ng-click="to_aptinfo(x.aid)">{{x.address}}</a>
+                                            <a class="list-link" ng-click="to_aptinfo(x.aid)">{{show_address(x.address)}}</a>
                                             <li>Available: {{x.startDate}}</li>
-                                            <li>Lease Term: {{x.term + " month(s)"}}</li>
+                                            <li>Lease Term: {{x.term + " months"}}</li>
                                             <li>Vacancy: {{x.vacancy}}</li>
                                             <li>Building Type: {{x.type}}</li>
-                                            <!-- <li>Utilities Included | Parking Included</li> -->
                                         </ul>
                                     </div>
                                 </div>
@@ -132,7 +120,7 @@
                                     <p>{{"$" + x.price}}</p>
                                 </div>
                                 <div class="info-like" style="width: 5%;">
-                                    <i class="like fa fa-star" ng-click="addFavor(x.aid)" ng-class="{'acti':(islActive == x.aid)}"></i>
+                                    <i class="like fa fa-star" ng-click="addFavor(x.aid)" ng-class="{'acti': star_acti(x.aid)}"></i>
                                 </div>
                             </div>
                         </dt>

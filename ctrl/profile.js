@@ -6,7 +6,7 @@
 
     function ProfileController($scope, $window, NavHeaderService, UserHttpService, AptHttpService){
         NavHeaderService.navheader_init(true);
-        let uid = localStorage.getItem("uid")
+        let uid = localStorage.getItem("uid");
         UserHttpService.getUser(uid).then(function(res){
             $scope.user = res.data;
         },function(res){

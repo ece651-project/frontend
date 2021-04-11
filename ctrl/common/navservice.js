@@ -8,6 +8,7 @@
     function NavHeaderService($rootScope, $window, ModalService){
         var service = {};
         service.navheader_init = function(back){
+            $rootScope.to_index = function(){$window.location.href = "/index.html";}
             if(localStorage.hasOwnProperty("uid")){
                 $rootScope.navbutton1 = "Profile";
                 $rootScope.navbutton2 = "Log out";
