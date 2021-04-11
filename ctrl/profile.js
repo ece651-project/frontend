@@ -22,8 +22,6 @@
         },function(res){
             alert("Error: "+res.status);
         });
-        //$scope.rent_aptlist = [1,2,3];
-        //$scope.favor_aptlist = [1,2,3];
 
         // For Rent
         var isnew= true;
@@ -46,6 +44,7 @@
             $scope.apt_show_form = true;
             AptHttpService.getApt(aid).then(function(res){
                 $scope.apt = res.data;
+                if($scope.apt.images == undefined){$scope.apt.images = [];}
                 for(i=0; i<$scope.apt.images.length; i++){$scope.images.push({src: $scope.apt.images[i]});}
                 $scope.apt.addr = {};
                 var addr_split = $scope.apt.address.split('|');
@@ -107,6 +106,7 @@
             var images_src = [];
             for(i=0; i<$scope.images.length; i++){images_src.push($scope.images[i].src);}
             $scope.apt.images = images_src;
+            if($scope.apt.addr.line2 == undefined){$scope.apt.addr.line2 = "";}
             $scope.apt.address = $scope.apt.addr.line1+'|'+$scope.apt.addr.line2+'|'+$scope.apt.addr.city+'|'+$scope.apt.addr.province+'|'+$scope.apt.addr.zip;
             $scope.apt.startDate = $scope.apt.date.toLocaleDateString('fr-CA');
             delete $scope.apt['addr'];
