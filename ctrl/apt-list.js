@@ -1,13 +1,85 @@
 (function () {
-    angular.module('apt-list', ['ui.bootstrap', 'ngAnimate', 'ngSanitize', 'navservice'])
-        .controller('list_ctrl', ListCtrl)
+    angular.module('apt-list', ['ui.bootstrap', 'ngAnimate', 'ngSanitize', 'httpservice', 'navservice'])
+        .controller('ListCtrl', ListCtrl)
         .controller('DatepickerCtrl', DatepickerCtrl);
     
-    function ListCtrl($scope, $window, NavHeaderService){
+    function ListCtrl($scope, $http, $window, NavHeaderService, UserHttpService){
         NavHeaderService.navheader_init(false);
+        let uid = localStorage.getItem("uid");
 
-        $scope.list = [1,2,3,4,5]
+        $http({
+            method: 'GET',
+            url: 'http://18.140.13.225:8080/apt/get_all'
+        }).then(function successCallback(response) {
+            $scope.data_info = response.data;
+        }, function errorCallback(response) {
+            alert("Request Failed!"); 
+        });
 
+        $scope.to_aptinfo = function(aid) {
+            localStorage.setItem("aid", aid);
+            $window.location.href = "/page/apt-info.html";
+        };
+
+        $scope.addFavor = function(aid) {
+            localStorage.setItem("aid", aid);
+            if ($scope.islActive === "") {
+                $scope.islActive = aid;
+            }
+            else if ($scope.islActive === aid) {
+                $scope.islActive = "";
+            }  
+            else {
+                $scope.islActive = aid;
+            }
+
+            var favor = {'uid': uid, 'aid': aid};
+            UserHttpService.addFavor(favor).then(function(res){
+                console.log(res);
+            }, function(res){
+                console.log(res);
+            });
+        };
+
+        $scope.priceSelect = "Price";
+        $scope.pricefilter = function(x) {
+            if($scope.priceSelect != "Price") {
+                if($scope.priceSelect == '<400') {
+                    var arr = $scope.priceSelect.split("<");
+                    var max = arr[1];
+                    if(x.price > max) {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                }
+                else if($scope.priceSelect == '>1000') {
+                    var arr = $scope.priceSelect.split(">");
+                    var min = arr[1];
+                    if(x.price < min) {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                }
+                else {
+                    var arr = $scope.priceSelect.split("~");
+                    var min = arr[0];
+                    var max = arr[1];
+                    if(x.price < min || x.price > max) {
+                        return false;
+                    }
+                    else {
+                        return true;
+                    }
+                }
+            }
+            else {
+                return true;
+            }
+        };
     }
 
     function DatepickerCtrl($scope){
