@@ -33,7 +33,7 @@
     padding-left: 17px;
 }
  
-.modal-body .form-group .ng-hide {
+.form-group .ng-hide {
     display: block!important;
     visibility: hidden;
 }
@@ -49,6 +49,10 @@
 .s-eye {
     top: 15.9rem;
     right: 2.6rem;
+}
+.p-eye {
+    top: 0.6rem;
+    right: 0.6rem;
 }
 
 .empty-star{
@@ -111,6 +115,11 @@
 .list-scrollbar {
     overflow-y: auto;
     height: 75vh;
+}
+
+.profile-scrollbar {
+    overflow-y: auto;
+    height: 70vh;
 }
 
 .bc-grey{
@@ -250,4 +259,37 @@ ul,li {
 }
 .cs {
     color:#ff4400;
+}
+
+.profile-container{
+    margin-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1500px;
+}
+
+.fa-map-maker{
+    padding-left: 2.8px;
+}
+
+.table-image{
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+.preview-image{
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin-right: 1rem;
+}
+.favor-image{
+    display: block;
+    max-height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
 }
