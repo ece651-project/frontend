@@ -9,7 +9,7 @@
         $scope.Showcomment=true;
         NavHeaderService.navheader_init(false);
         $http.get("http://18.140.13.225:8080/user/get_apt/686ff1a5-dea1-4197-b091-3a177042e075").then(function (response) {
-            $scope.apt_info = response.xdata[0];
+            $scope.apt_info = response.data[0];
             image_length=response.data[0].images.length;
         });
         $http.get("http://18.140.13.225:8080/user/get_user/686ff1a5-dea1-4197-b091-3a177042e075").then(function (response) {
