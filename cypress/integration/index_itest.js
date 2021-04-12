@@ -9,7 +9,7 @@ context('Integration Test', ()=>{
         cy.get('.nav-link').eq(0).click()
         cy.get('input[name="login_email"]').type('123@gmail.com')
         cy.get('input[name="login_pwd"]').type('123123aa')
-        cy.get('.modal-footer>.btn-primary').click().wait(1000)
+        cy.get('.modal-footer>.btn-primary').click().wait(2000)
         cy.get('.nav-link').eq(0).should('have.text', 'Profile')
         cy.get('.nav-link').eq(0).click().wait(2000)
         cy.get('li[heading="For Rent"]').click()
@@ -34,5 +34,7 @@ context('Integration Test', ()=>{
         cy.get('.card').eq(1).find('.card-body').eq(3).find('.float-right').should('have.text', '2')
         cy.get('.card').eq(1).find('.card-body').eq(4).find('.float-right').should('have.text', '600 CAD$/month')
 
+        cy.get('.nav-link').eq(0).click().wait(2000)
+        cy.get('table').find('tr').last().find('td').eq(2).find('.btn-primary').eq(1).click().wait(2000)
     })
 })
