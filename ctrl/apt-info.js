@@ -10,15 +10,14 @@
         $scope.apt_info = {address:""};
         $scope.slides = [];
         NavHeaderService.navheader_init(false);
-        let uid = localStorage.getItem("uid");
         let aid = localStorage.getItem("aid");
-        UserHttpService.getUser(uid).then(function(res){
-            $scope.user_info = res.data;
-        }, function(res){
-            alert("Error: "+res.status);
-        });
         AptHttpService.getApt(aid).then(function(res){
             $scope.apt_info = res.data;
+            UserHttpService.getUser($scope.apt_info.landlordId).then(function(res){
+                $scope.user_info = res.data;
+            }, function(res){
+                alert("Error: "+res.status);
+            });
             for(i=0;i<$scope.apt_info.images.length;i++){
                 $scope.addSlide($scope.apt_info.images[i]);
             }

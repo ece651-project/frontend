@@ -16,7 +16,7 @@
     <body ng-controller="ListCtrl">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="navbar-header">
-                <a class="navbar-brand" ng-click="to_index()">XxxX</a>
+                <a class="navbar-brand" ng-click="to_index()">ARWP</a>
             </div>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -103,7 +103,7 @@
                         <dt class="info border-bottom" ng-repeat="x in data_info|filter:pricefilter" style="margin-bottom: 3%; font-size: 15px; font-weight: 500;">
                             <div class="box d-flex justify-content-between">
                                 <div class="info-image text-center" style="width: 30%;">
-                                    <img src="{{x.images[0]}}" alt="house-image" style="max-height: 150px;">
+                                    <img src="{{x.images[0]}}" alt="house-image" style="max-height: 150px;" ng-click="to_aptinfo(x.aid)">
                                 </div>
                                 <div class="info-details d-flex justify-content-between" style="width: 50%;">
                                     <div class="box1">
@@ -175,12 +175,5 @@
                 })
             })
         </script>
-
-        <!-- script for like -->
-        <!-- <script>
-            $(".like").click(function(){
-                $(this).toggleClass('cs');                
-            })
-        </script> -->
     </body>
 </html>
