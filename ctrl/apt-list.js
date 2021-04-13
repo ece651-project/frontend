@@ -3,41 +3,41 @@
         .controller('ListCtrl', ListCtrl)
         .controller('DatepickerCtrl', DatepickerCtrl);
     
-    function ListCtrl($scope, $http, $window, NavHeaderService, UserHttpService){
+    function ListCtrl($scope, $window, NavHeaderService, UserHttpService, AptHttpService){
         NavHeaderService.navheader_init(false);
         let uid = localStorage.getItem("uid");
-
-        $http({
-            method: 'GET',
-            url: 'http://18.140.13.225:8080/apt/get_all'
-        }).then(function successCallback(response) {
-            $scope.data_info = response.data;
-        }, function errorCallback(response) {
-            alert("Request Failed!"); 
+        AptHttpService.getAllApt().then(function(res){
+            $scope.data_info = res.data;
+        }, function(res){
+            alert("Error: "+res.status);
+        });
+        UserHttpService.getFavor(uid).then(function(res){
+            $scope.favor = res.data;
+            $scope.favor_list = $scope.favor.map(x => (x.aid));
+        }, function(res){
+            alert("Error: "+res.status);
         });
 
         $scope.to_aptinfo = function(aid) {
             localStorage.setItem("aid", aid);
             $window.location.href = "/page/apt-info.html";
         };
-
+        $scope.show_address = function(address){
+            var addr = address.split('|');
+            addr.pop();
+            return addr.filter(x => x).join();
+        }
+        $scope.star_acti = function(aid){
+            if($scope.favor_list.includes(aid)){return true;}
+            else{return false;}
+        }
         $scope.addFavor = function(aid) {
-            localStorage.setItem("aid", aid);
-            if ($scope.islActive === "") {
-                $scope.islActive = aid;
-            }
-            else if ($scope.islActive === aid) {
-                $scope.islActive = "";
-            }  
-            else {
-                $scope.islActive = aid;
-            }
-
             var favor = {'uid': uid, 'aid': aid};
             UserHttpService.addFavor(favor).then(function(res){
-                console.log(res);
+                if(res.data.success){location.reload();}
+                else{alert(res.data.msg);}
             }, function(res){
-                console.log(res);
+                alert("Error: "+res.status);
             });
         };
 
@@ -98,19 +98,6 @@
             showWeeks: true
         };
       
-        // Disable weekend selection
-        function disabled(data) {
-            var date = data.date,
-                mode = data.mode;
-            return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
-        }
-      
-        $scope.toggleMin = function() {
-            $scope.options.minDate = $scope.options.minDate ? null : new Date();
-        };
-      
-        $scope.toggleMin();
-      
         $scope.setDate = function(year, month, day) {
             $scope.dt = new Date(year, month, day);
         };
@@ -144,7 +131,6 @@
                 }
                 }
             }
-            return '';
         }
     }
 })();

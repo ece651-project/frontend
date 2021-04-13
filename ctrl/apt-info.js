@@ -2,22 +2,54 @@
     angular.module('apt-info', ['ui.bootstrap', 'ngAnimate', 'ngSanitize', 'httpservice','navservice'])
         .controller('InfoController', InfoController)
         .controller('RatingDemoCtrl', RatingDemoCtrl)
-        .controller('CarouselDemoCtrl', CarouselDemoCtrl)
         .controller('siteCtrl', siteCtrl);
 
 
-    function siteCtrl($scope, $http, NavHeaderService) {
+    function siteCtrl($scope, $uibModal, NavHeaderService, UserHttpService, AptHttpService) {
         $scope.Showcomment=true;
+        $scope.apt_info = {address:""};
+        $scope.slides = [];
         NavHeaderService.navheader_init(false);
-        $http.get("http://18.140.13.225:8080/user/get_apt/686ff1a5-dea1-4197-b091-3a177042e075").then(function (response) {
-            $scope.apt_info = response.data[0];
+        let aid = localStorage.getItem("aid");
+        AptHttpService.getApt(aid).then(function(res){
+            $scope.apt_info = res.data;
+            UserHttpService.getUser($scope.apt_info.landlordId).then(function(res){
+                $scope.user_info = res.data;
+            }, function(res){
+                alert("Error: "+res.status);
+            });
+            for(i=0;i<$scope.apt_info.images.length;i++){
+                $scope.addSlide($scope.apt_info.images[i]);
+            }
+        }, function(res){
+            alert("Error: "+res.status);
         });
-        $http.get("http://18.140.13.225:8080/user/get_user/686ff1a5-dea1-4197-b091-3a177042e075").then(function (response) {
-            $scope.user_info = response.data;
-        });
+
+        $scope.show_address = function(address, short=false){
+            var addr = address.split('|');
+            if(short){
+                addr.pop();addr.pop();
+            }
+            return addr.filter(x => x).join();
         }
-
-
+        // images
+        $scope.myInterval = 5000;
+        $scope.noWrapSlides = false;
+        $scope.active = 0;
+        var currIndex = 0;
+        $scope.addSlide = function(src) {
+            $scope.slides.push({
+                image: src,
+                id: currIndex++
+          });
+        };
+        $scope.show_picture = function(){
+            $uibModal.open({
+                size: 'md modal-dialog-centered',
+                templateUrl: 'picture.html',
+            }).result.catch(function(){});
+        }
+    }
 
     function RatingDemoCtrl($scope) {
         $scope.rate = 7;
@@ -43,7 +75,7 @@
             if (a == 1)
                 $uibModal.open({
                     size: 'md modal-dialog-centered',
-                    templateUrl: 'picture1.html',
+                    templateUrl: 'picture.html',
                 }).result.catch(function () { });
             else if (a == 4)
                 $uibModal.open({
@@ -57,43 +89,6 @@
                 }).result.catch(function () { });
         }
     }
-
-    function CarouselDemoCtrl($scope,$uibModal){
-        $scope.myInterval = 5000;
-        $scope.noWrapSlides = false;
-        $scope.active = 0;
-        var slides = $scope.slides = [];
-        var currIndex = 0;
-        var picture_id = 4;
-        
-        $scope.addSlide = function() {
-          slides.push({
-            image1: 'iVBORw0KGgoAAAANSUhEUgAAABIAAAATCAIAAAAS8MqlAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw',
-            image: '../src/'+picture_id+'.jpg',
-            id: currIndex++
-          });
-        };
-        $scope.show_picture = function () {
-                $uibModal.open({
-                    size: 'md modal-dialog-centered',
-                    templateUrl: 'picture.html',
-                }).result.catch(function () { });}
-      
-        for (var i = 0; i < 2; i++) {
-            picture_id =picture_id+1;
-            $scope.addSlide();
-        }
-      
-        // Randomize logic below
-      }
-
-
-
-
-
-
-
-
 })();
 
 

@@ -48,7 +48,7 @@ const url = 'http://18.140.13.225:8080';
             return $http.get(url+'/apt/get_apt/'+aid);
         }
         service.getAllApt = function(){
-            return $http.get(url+'/user/get_all/');
+            return $http.get(url+'/apt/get_all/');
         }
         service.deleteApt = function(uid, aid){
             return $http.delete(url+'/apt/delete_apt/'+uid+'/'+aid);

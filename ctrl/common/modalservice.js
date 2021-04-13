@@ -12,14 +12,14 @@
         service.open_login = function(){
             $uibModal.open({
                 size:'md modal-dialog-centered',
-                templateUrl: '/frontend/page/login.html',
+                templateUrl: '/page/login.html',
                 controller: 'ModalLoginCtrl',
             }).result.catch(function(){});
         }
         service.open_signup = function(){
             $uibModal.open({
                 size:'md modal-dialog-centered',
-                templateUrl: '/frontend/page/signup.html',
+                templateUrl: '/page/signup.html',
                 controller: 'ModalSignupCtrl',
             }).result.catch(function(){});
         }
